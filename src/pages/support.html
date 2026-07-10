@@ -1,0 +1,49 @@
+<!--{
+  "title": "Help & Support | Northstar Studio",
+  "description": "Submit a support inquiry or request mock troubleshooting (fictional log).",
+  "active_nav": ""
+}-->
+<section class="hero">
+  <div class="container contact-shell-grid">
+    <div class="reveal">
+      <p class="eyebrow">Troubleshooting</p>
+      <h1>Request Tech Support</h1>
+      <p style="color: var(--text-muted); margin-bottom: 2rem;">This form processes mockup support requests, validating email and description fields. Submitting generates a random simulated reference number.</p>
+
+      <div class="card">
+        <h3>Support Guidelines</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">For layout inquiries, refer to the sitemap or the FAQ center first. In a production site, this panel details system uptimes, contact paths, and diagnostic scripts.</p>
+      </div>
+    </div>
+
+    <!-- Ticket Form -->
+    <div class="card reveal" style="padding: 2.25rem;">
+      <h3 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 1.5rem;">Submit a Ticket</h3>
+      <form class="contact-form" id="support-form" novalidate>
+        <div class="form-group">
+          <label for="support-email">Email <span style="color: var(--accent-cyan);">*</span></label>
+          <input type="email" id="support-email" class="form-control" placeholder="you@example.com" required />
+          <div class="invalid-feedback">A valid email is required.</div>
+        </div>
+
+        <div class="form-group">
+          <label for="support-category">Topic Category</label>
+          <select id="support-category" class="form-control" style="background: #111827;">
+            <option value="layout">Layout Spacing Issue (Mock)</option>
+            <option value="search">Search Modal Anomaly (Mock)</option>
+            <option value="downloads">Download Link Inquiry (Mock)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="support-message">Description <span style="color: var(--accent-cyan);">*</span></label>
+          <textarea id="support-message" class="form-control" rows="4" placeholder="Detail the layout anomaly or file download issue..." required></textarea>
+          <div class="invalid-feedback">Description is required.</div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Submit Support Ticket</button>
+        <p class="form-message" role="status" aria-live="polite" style="margin-top: 1rem; font-weight: 500; font-size: 0.9rem; text-align: center;"></p>
+      </form>
+    </div>
+  </div>
+</section>

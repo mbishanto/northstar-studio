@@ -1,0 +1,53 @@
+<!--{
+  "title": "Thoughts & Articles | Northstar Studio",
+  "description": "Fictional blog list showing 20 technical layout and optimization samples.",
+  "active_nav": "blog"
+}-->
+<section class="hero">
+  <div class="container">
+    <div class="section-heading reveal">
+      <p class="eyebrow">Technical Articles</p>
+      <h1>Latest technical writing log.</h1>
+      <p>Browse our 20 sample articles detailing frontend optimization, responsive layouts, web assembly, and accessibility guides. All posts are marked as fictional demo content.</p>
+    </div>
+
+    <!-- Dynamic Client-side Search bar for blog posts -->
+    <div class="reveal" style="max-width: 500px; margin-bottom: 3.5rem;">
+      <div class="search-input-wrap" style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); padding: 0.75rem 1.25rem; border-radius: var(--radius-full);">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--text-muted);"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="search" placeholder="Search blog articles..." id="blog-search-input" style="font-size: 0.95rem;" autocomplete="off" />
+      </div>
+    </div>
+
+    <!-- Blog Posts Grid (Compiled statically by build.js) -->
+    <div class="blog-grid reveal" id="blog-posts-root">
+      {{blog_posts}}
+    </div>
+  </div>
+</section>
+
+<!-- Client-side filter script -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('blog-search-input');
+    const articles = document.querySelectorAll('#blog-posts-root .blog-card-article');
+
+    if (!searchInput) return;
+
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.trim().toLowerCase();
+      
+      articles.forEach(article => {
+        const title = article.querySelector('h3').textContent.toLowerCase();
+        const category = article.querySelector('.project-badge').textContent.toLowerCase();
+        const snippet = article.querySelector('p').textContent.toLowerCase();
+
+        if (title.includes(query) || category.includes(query) || snippet.includes(query)) {
+          article.style.display = 'flex';
+        } else {
+          article.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>

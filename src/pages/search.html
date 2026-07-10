@@ -1,0 +1,84 @@
+<!--{
+  "title": "Search Results | Northstar Studio",
+  "description": "Interactive search results panel for the portfolio site (fictional search).",
+  "active_nav": ""
+}-->
+<section class="hero">
+  <div class="container" style="max-width: 750px;">
+    <div class="section-heading reveal">
+      <p class="eyebrow">Search Index</p>
+      <h1>Search Results</h1>
+      <p>Type keywords in the search bar below to filter matching routes, blog articles, and project snap summaries instantly.</p>
+    </div>
+
+    <!-- Search box interface -->
+    <div class="reveal" style="display: flex; flex-direction: column; gap: 1.5rem;">
+      <div class="search-input-wrap" style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); padding: 0.85rem 1.25rem; border-radius: var(--radius-full);">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--text-muted);"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="search" placeholder="Type keywords here (e.g. cloud, resume, design)..." id="page-search-input" style="font-size: 1.05rem;" autocomplete="off" />
+      </div>
+
+      <div class="search-results-wrap" id="page-search-results" style="background: transparent; padding: 0;">
+        <p class="search-hint">Type search queries to locate pages, articles, and resources.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Page-specific search integration referencing searchIndex in script.js (if loaded) or redundancy logic -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const input = document.getElementById('page-search-input');
+    const results = document.getElementById('page-search-results');
+    if (!input || !results) return;
+
+    // Local redundancy index if main index is not accessible
+    const searchIndex = [
+      { title: "Home Page", url: "index.html", desc: "View the portfolio main page and featured items.", cat: "Page" },
+      { title: "About Us Story", url: "about.html", desc: "Learn about the designers, developers, and process values.", cat: "Page" },
+      { title: "Client Portfolio Projects", url: "projects.html", desc: "Browse our 12 complete portfolio builds.", cat: "Page" },
+      { title: "Available Services", url: "services.html", desc: "Explore user interface, API, and cloud services.", cat: "Page" },
+      { title: "Skills & Stack", url: "skills.html", desc: "Check core coding and layout technologies.", cat: "Page" },
+      { title: "Resume & Education", url: "resume.html", desc: "Detailed professional experience and academic degrees.", cat: "Page" },
+      { title: "Blog Hub", url: "blog.html", desc: "Read 20 sample articles detailing development tricks.", cat: "Page" },
+      { title: "Contact Inquiry", url: "contact.html", desc: "Drop a line or schedule consultation hours.", cat: "Page" },
+      { title: "Frequently Asked Questions (FAQ)", url: "faq.html", desc: "Find support answers regarding workflow guidelines.", cat: "Page" },
+      { title: "Pricing & Plans", url: "pricing.html", desc: "Compare monthly and annual subscription options.", cat: "Page" },
+      { title: "Our Process Timeline", url: "process.html", desc: "See our staging, build, and launch flow.", cat: "Page" },
+      { title: "Testimonials Listing", url: "testimonials.html", desc: "Read fictional reviews from verified clients.", cat: "Page" },
+      { title: "Case Studies Index", url: "case-studies.html", desc: "Deep-dives into conversion metrics and KPIs.", cat: "Page" },
+      { title: "Downloads & Files", url: "downloads.html", desc: "Get style guide files, templates, and logs.", cat: "Page" },
+      { title: "Certifications Log", url: "certifications.html", desc: "Review visual design and engineering badges.", cat: "Page" },
+      { title: "Open Source Repos", url: "open-source.html", desc: "Check sample GitHub repository code integrations.", cat: "Page" },
+      { title: "Privacy Policy", url: "privacy.html", desc: "Fictional compliance details.", cat: "Page" },
+      { title: "Sitemap Hub", url: "sitemap.html", desc: "Browse a unified list of all pages.", cat: "Page" }
+    ];
+
+    input.addEventListener('input', () => {
+      const query = input.value.trim().toLowerCase();
+      if (query.length < 2) {
+        results.innerHTML = '<p class="search-hint">Type search queries to locate pages, articles, and resources.</p>';
+        return;
+      }
+
+      const matched = searchIndex.filter(item => 
+        item.title.toLowerCase().includes(query) || 
+        item.desc.toLowerCase().includes(query) || 
+        item.cat.toLowerCase().includes(query)
+      );
+
+      if (matched.length === 0) {
+        results.innerHTML = '<p class="search-hint">No results found matching your search query.</p>';
+        return;
+      }
+
+      results.innerHTML = matched.map(item => `
+        <a href="${item.url}" class="search-result-item" style="background: var(--surface-color); padding: 1.15rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color); display: block; margin-bottom: 0.85rem;">
+          <div class="search-result-title" style="font-size: 1.15rem;">${item.title}</div>
+          <div class="search-result-snippet" style="margin-top: 0.25rem;">${item.desc}</div>
+          <span class="search-result-category" style="margin-top: 0.5rem; display: inline-block;">${item.cat}</span>
+        </a>
+      `).join('');
+    });
+  });
+</script>

@@ -1,0 +1,75 @@
+<!--{
+  "title": "Visual Gallery | Northstar Studio",
+  "description": "Fictional mockup gallery showing layout images (demo assets).",
+  "active_nav": "projects"
+}-->
+<section class="hero">
+  <div class="container">
+    <div class="section-heading reveal">
+      <p class="eyebrow">Design Showroom</p>
+      <h1>Visual component gallery.</h1>
+      <p>This layout arranges SVG placeholders in a masonry grid system. Each image card can be opened in a mock visual overlay box.</p>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="grid-3 reveal" id="gallery-container">
+      
+      <!-- Image 1 -->
+      <article class="card project-card" style="cursor: pointer;" onclick="openGalleryModal('images/gallery-1.svg', 'Mock Wireframe Layout')">
+        <div class="project-card-image" style="height: 250px;">
+          <img src="images/gallery-1.svg" alt="Fictional mock wireframe design" style="object-fit: cover;" />
+        </div>
+        <div class="project-card-content" style="padding: 1rem;">
+          <h3 style="font-size: 1.15rem; margin-bottom: 0.25rem;">Mock Wireframe Layout</h3>
+          <span style="font-size: 0.775rem; color: var(--accent-cyan);">Click to view details</span>
+        </div>
+      </article>
+
+      <!-- Image 2 -->
+      <article class="card project-card" style="cursor: pointer;" onclick="openGalleryModal('images/gallery-2.svg', 'Mock Token Dashboard')">
+        <div class="project-card-image" style="height: 250px;">
+          <img src="images/gallery-2.svg" alt="Fictional design tokens dashboard layout" style="object-fit: cover;" />
+        </div>
+        <div class="project-card-content" style="padding: 1rem;">
+          <h3 style="font-size: 1.15rem; margin-bottom: 0.25rem;">Mock Token Dashboard</h3>
+          <span style="font-size: 0.775rem; color: var(--accent-cyan);">Click to view details</span>
+        </div>
+      </article>
+
+      <!-- Image 3 -->
+      <article class="card project-card" style="cursor: pointer;" onclick="openGalleryModal('images/gallery-3.svg', 'Mock Architecture Nodes')">
+        <div class="project-card-image" style="height: 250px;">
+          <img src="images/gallery-3.svg" alt="Fictional cloud layout flowchart design" style="object-fit: cover;" />
+        </div>
+        <div class="project-card-content" style="padding: 1rem;">
+          <h3 style="font-size: 1.15rem; margin-bottom: 0.25rem;">Mock Architecture Nodes</h3>
+          <span style="font-size: 0.775rem; color: var(--accent-cyan);">Click to view details</span>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- Custom Gallery Modal Dialog -->
+<dialog class="search-modal" id="gallery-dialog" style="overflow: hidden;">
+  <div class="search-modal-card" style="width: min(700px, 95vw); position: relative; padding: 1.5rem; background: var(--bg-color); border: 1px solid var(--border-color); border-radius: var(--radius-md);">
+    <button onclick="document.getElementById('gallery-dialog').close()" aria-label="Close image" style="position: absolute; top: 1rem; right: 1rem; font-size: 1.25rem; color: var(--text-color); cursor: pointer; z-index: 10;">✕</button>
+    <img id="gallery-dialog-img" src="" alt="Expanded preview illustration" style="width: 100%; border-radius: var(--radius-sm); margin-bottom: 1rem; border: 1px solid var(--border-color);" />
+    <h3 id="gallery-dialog-title" style="font-family: var(--font-heading); font-size: 1.35rem; font-weight: 700;">Expanded Preview</h3>
+    <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 0.25rem;">This represents fictional demonstration artwork.</p>
+  </div>
+</dialog>
+
+<script>
+  function openGalleryModal(src, title) {
+    const dialog = document.getElementById('gallery-dialog');
+    const img = document.getElementById('gallery-dialog-img');
+    const titleEl = document.getElementById('gallery-dialog-title');
+    if (!dialog || !img) return;
+
+    img.src = src;
+    if (titleEl) titleEl.textContent = title;
+    dialog.showModal();
+  }
+</script>

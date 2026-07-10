@@ -1,0 +1,74 @@
+<!--{
+  "title": "Downloads Center | Northstar Studio",
+  "description": "Download mock assets, resume files, and code guides (fictional log).",
+  "active_nav": "resources"
+}-->
+<section class="hero">
+  <div class="container" style="max-width: 900px;">
+    <div class="section-heading reveal">
+      <p class="eyebrow">Asset Logs</p>
+      <h1>Download files & packages.</h1>
+      <p>This page lists resource download links structured in a clean data table. Clicking elements triggers simulated modal alerts.</p>
+    </div>
+
+    <!-- Table component -->
+    <div class="table-wrap reveal">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">File Name</th>
+            <th scope="col">Category</th>
+            <th scope="col">Size</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Northstar_Resume_2026.pdf</strong></td>
+            <td><span class="info-chip" style="font-size: 0.7rem; padding: 0.2rem 0.5rem;">Document</span></td>
+            <td>1.4 MB</td>
+            <td><button class="btn btn-secondary btn-sm" onclick="triggerDemoDownload('Northstar_Resume_2026.pdf')">Download (Mock)</button></td>
+          </tr>
+          <tr>
+            <td><strong>Aether_UI_Design_Kit.fig</strong></td>
+            <td><span class="info-chip" style="font-size: 0.7rem; padding: 0.2rem 0.5rem;">Design Asset</span></td>
+            <td>14.2 MB</td>
+            <td><button class="btn btn-secondary btn-sm" onclick="triggerDemoDownload('Aether_UI_Design_Kit.fig')">Download (Mock)</button></td>
+          </tr>
+          <tr>
+            <td><strong>Telemetry_Token_Data.json</strong></td>
+            <td><span class="info-chip" style="font-size: 0.7rem; padding: 0.2rem 0.5rem;">JSON Config</span></td>
+            <td>48 KB</td>
+            <td><button class="btn btn-secondary btn-sm" onclick="triggerDemoDownload('Telemetry_Token_Data.json')">Download (Mock)</button></td>
+          </tr>
+          <tr>
+            <td><strong>Workspace_Contour_Mapper.zip</strong></td>
+            <td><span class="info-chip" style="font-size: 0.7rem; padding: 0.2rem 0.5rem;">Code Package</span></td>
+            <td>8.9 MB</td>
+            <td><button class="btn btn-secondary btn-sm" onclick="triggerDemoDownload('Workspace_Contour_Mapper.zip')">Download (Mock)</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- Simple Download Dialog box -->
+<dialog class="search-modal" id="download-dialog">
+  <div class="search-modal-card" style="width: min(400px, 90vw); padding: 1.5rem; text-align: center; background: var(--bg-color); border: 1px solid var(--border-color); border-radius: var(--radius-md);">
+    <div style="font-size: 2.5rem; color: var(--accent-cyan); margin-bottom: 0.75rem;">⇣</div>
+    <h3 style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem;">Simulated Download</h3>
+    <p style="color: var(--text-muted); font-size: 0.875rem; margin-bottom: 1.5rem;">You triggered a mockup download for: <br><strong id="download-filename" style="color: var(--text-color);">filename</strong></p>
+    <button onclick="document.getElementById('download-dialog').close()" class="btn btn-primary btn-sm" style="width: 100%;">Dismiss</button>
+  </div>
+</dialog>
+
+<script>
+  function triggerDemoDownload(filename) {
+    const dialog = document.getElementById('download-dialog');
+    const nameEl = document.getElementById('download-filename');
+    if (!dialog || !nameEl) return;
+    nameEl.textContent = filename;
+    dialog.showModal();
+  }
+</script>

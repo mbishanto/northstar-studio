@@ -1,0 +1,68 @@
+<!--{
+  "title": "Certifications | Northstar Studio",
+  "description": "Fictional list of professional training and design certificates.",
+  "active_nav": "resume"
+}-->
+<section class="hero">
+  <div class="container">
+    <div class="section-heading reveal">
+      <p class="eyebrow">Credentials</p>
+      <h1>Professional certifications list.</h1>
+      <p>This layout outlines training logs, verify buttons, and issues. All credentials represent fictional demo items.</p>
+    </div>
+
+    <div class="grid-3 reveal">
+      
+      <!-- Cert 1 -->
+      <article class="card" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+        <div>
+          <span style="font-size: 1.5rem; color: var(--accent-cyan); display: block; margin-bottom: 0.75rem;">🛡</span>
+          <h3>Advanced Web Engineer</h3>
+          <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 0.5rem; margin-bottom: 1.25rem;">Issued by Fictional Development Academy in 2025. Validates responsive styling variables, reflow testing profiles, and semantic structuring guidelines.</p>
+        </div>
+        <button class="btn btn-secondary btn-sm" onclick="triggerVerifyCert('Advanced Web Engineer')">Verify (Mock)</button>
+      </article>
+
+      <!-- Cert 2 -->
+      <article class="card" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+        <div>
+          <span style="font-size: 1.5rem; color: var(--accent-cyan); display: block; margin-bottom: 0.75rem;">✦</span>
+          <h3>Design Systems Architect</h3>
+          <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 0.5rem; margin-bottom: 1.25rem;">Issued by Mock Design Guild in 2024. Covers token scaling matrices, light/dark responsive overrides, and Figma vector components.</p>
+        </div>
+        <button class="btn btn-secondary btn-sm" onclick="triggerVerifyCert('Design Systems Architect')">Verify (Mock)</button>
+      </article>
+
+      <!-- Cert 3 -->
+      <article class="card" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+        <div>
+          <span style="font-size: 1.5rem; color: var(--accent-cyan); display: block; margin-bottom: 0.75rem;">⚡</span>
+          <h3>Cloud Performance Expert</h3>
+          <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 0.5rem; margin-bottom: 1.25rem;">Issued by Sample DevOps Center in 2023. Validates AWS Lambda serverless pipelines configuration, Docker, and edge caching parameters.</p>
+        </div>
+        <button class="btn btn-secondary btn-sm" onclick="triggerVerifyCert('Cloud Performance Expert')">Verify (Mock)</button>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- Verification modal -->
+<dialog class="search-modal" id="cert-dialog">
+  <div class="search-modal-card" style="width: min(400px, 90vw); padding: 1.5rem; text-align: center; background: var(--bg-color); border: 1px solid var(--border-color); border-radius: var(--radius-md);">
+    <div style="font-size: 2.5rem; color: var(--accent-cyan); margin-bottom: 0.75rem;">✓</div>
+    <h3 style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem;">Verification Success</h3>
+    <p style="color: var(--text-muted); font-size: 0.875rem; margin-bottom: 1.5rem;">Credential successfully verified on mock servers: <br><strong id="cert-name" style="color: var(--text-color);">cert</strong></p>
+    <button onclick="document.getElementById('cert-dialog').close()" class="btn btn-primary btn-sm" style="width: 100%;">Close</button>
+  </div>
+</dialog>
+
+<script>
+  function triggerVerifyCert(certName) {
+    const dialog = document.getElementById('cert-dialog');
+    const nameEl = document.getElementById('cert-name');
+    if (!dialog || !nameEl) return;
+    nameEl.textContent = certName;
+    dialog.showModal();
+  }
+</script>

@@ -1,0 +1,59 @@
+<!--{
+  "title": "Documentation Hub | Northstar Studio",
+  "description": "Fictional technical documentation and code blocks for developers.",
+  "active_nav": "resources"
+}-->
+<section class="hero">
+  <div class="container project-details-grid">
+    <!-- Sidebar Navigation -->
+    <div class="project-snapshot-panel reveal" style="padding: 1.5rem; top: 100px;">
+      <h3 class="project-snapshot-title" style="font-size: 1.15rem; margin-bottom: 1rem;">Docs Index</h3>
+      <nav style="display: flex; flex-direction: column; gap: 0.75rem;" aria-label="Documentation Directory">
+        <a href="#intro" style="font-size: 0.9rem; color: var(--accent-cyan); font-weight: 500;">1. Introduction (Mock)</a>
+        <a href="#variables" style="font-size: 0.9rem;">2. CSS Variables Layout</a>
+        <a href="#search" style="font-size: 0.9rem;">3. Client Search API</a>
+        <a href="#telemetry" style="font-size: 0.9rem;">4. Telemetry Mocks</a>
+      </nav>
+    </div>
+
+    <!-- Docs Content -->
+    <div class="reveal">
+      <p class="eyebrow">Developer Hub</p>
+      <h1 style="font-size: clamp(2rem, 4vw, 2.75rem);">Technical Guides & Reference</h1>
+      <p style="color: var(--text-muted); margin-bottom: 2rem;">This page displays technical guidelines, code blocks, and sidebar menus. Every instruction represents fictional mockup documentation.</p>
+      
+      <div style="display: flex; flex-direction: column; gap: 2.5rem;">
+        
+        <!-- Section 1 -->
+        <article id="intro">
+          <h2 style="font-family: var(--font-heading); font-size: 1.65rem; margin-bottom: 0.75rem;">1. Introduction</h2>
+          <p style="color: var(--text-muted); margin-bottom: 1rem;">This documentation system assists in setting up dark theme dashboards. The mock code snippets below demonstrate compiler patterns and local setups.</p>
+        </article>
+
+        <!-- Section 2 -->
+        <article id="variables">
+          <h2 style="font-family: var(--font-heading); font-size: 1.65rem; margin-bottom: 0.75rem;">2. CSS Variables Layout</h2>
+          <p style="color: var(--text-muted); margin-bottom: 1rem;">Define layout variables inside the stylesheet `:root` element. To apply glassmorphism styles, integrate backdrop-filter and border parameters:</p>
+          <pre style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); padding: 1.25rem; border-radius: var(--radius-sm); font-family: monospace; font-size: 0.85rem; overflow-x: auto; color: var(--accent-cyan);">
+:root {
+  --bg-color: #030712;
+  --surface-glass: rgba(17, 24, 39, 0.55);
+  --border-glow: rgba(255, 255, 255, 0.08);
+  --glass-filter: blur(12px) saturate(180%);
+}</pre>
+        </article>
+
+        <!-- Section 3 -->
+        <article id="search">
+          <h2 style="font-family: var(--font-heading); font-size: 1.65rem; margin-bottom: 0.75rem;">3. Client Search API</h2>
+          <p style="color: var(--text-muted); margin-bottom: 1rem;">The search modal runs locally by checking queries against a JSON route index array. It filters matches via standard array filter patterns:</p>
+          <pre style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); padding: 1.25rem; border-radius: var(--radius-sm); font-family: monospace; font-size: 0.85rem; overflow-x: auto; color: var(--accent-cyan);">
+const matches = searchIndex.filter(item => 
+  item.title.toLowerCase().includes(query)
+);</pre>
+        </article>
+
+      </div>
+    </div>
+  </div>
+</section>
