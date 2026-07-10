@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Fictional blog list showing 20 technical layout and optimization samples." />
+    <meta name="theme-color" content="#030712" />
+    <link rel="canonical" href="https://northstar.example.com/pages/blog/blog.html" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://northstar.example.com/pages/blog/blog.html" />
+    <meta property="og:title" content="Thoughts & Articles | Northstar Studio" />
+    <meta property="og:description" content="Fictional blog list showing 20 technical layout and optimization samples." />
+    <meta property="og:image" content="../../assets/images/project-placeholder.svg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://northstar.example.com/pages/blog/blog.html" />
+    <meta property="twitter:title" content="Thoughts & Articles | Northstar Studio" />
+    <meta property="twitter:description" content="Fictional blog list showing 20 technical layout and optimization samples." />
+    <meta property="twitter:image" content="../../assets/images/project-placeholder.svg" />
+
+    <!-- Schema.org JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Northstar Studio",
+      "url": "https://northstar.example.com/",
+      "description": "Fictional portfolio website and interactive layout template.",
+      "author": {
+        "@type": "Person",
+        "name": "Example Author"
+      }
+    }
+    </script>
+
+    <title>Thoughts & Articles | Northstar Studio</title>
+    
+    <!-- Google Fonts: Outfit (headings) & Inter (body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../../assets/css/style.css" />
+  </head>
+  <body id="top">
+    <!-- Skip to Main Content Link for Accessibility -->
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <!-- Cursor Glow effect -->
+    <div class="cursor-glow" aria-hidden="true"></div>
+
+    <!-- Sticky Header Navigation -->
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="../../index.html">Northstar Studio</a>
+        
+        <div class="nav-actions">
+          <!-- Live Interactive Search button -->
+          <button class="search-trigger" aria-label="Open search modal" id="open-search-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="search-icon"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <span class="search-trigger-text">Search...</span>
+            <kbd class="search-kbd">/</kbd>
+          </button>
+
+          <!-- Mobile Nav Toggle -->
+          <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="site-nav">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+
+        <nav class="site-nav" id="site-nav">
+          <a href="../../index.html" data-nav="home">Home</a>
+          <a href="../../pages/about.html" data-nav="about">About</a>
+          <a href="../../pages/projects/projects.html" data-nav="projects">Projects</a>
+          <a href="../../pages/services.html" data-nav="services">Services</a>
+          <a href="../../pages/skills.html" data-nav="skills">Skills</a>
+          <a href="../../pages/resume.html" data-nav="resume">Resume</a>
+          <a href="../../pages/blog/blog.html" data-nav="blog">Blog</a>
+          <a href="../../pages/contact.html" data-nav="contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main id="main-content" tabindex="-1">
+      <section class="hero">
+  <div class="container">
+    <div class="section-heading reveal">
+      <p class="eyebrow">Technical Articles</p>
+      <h1>Latest technical writing log.</h1>
+      <p>Browse our 20 sample articles detailing frontend optimization, responsive layouts, web assembly, and accessibility guides. All posts are marked as fictional demo content.</p>
+    </div>
+
+    <!-- Dynamic Client-side Search bar for blog posts -->
+    <div class="reveal" style="max-width: 500px; margin-bottom: 3.5rem;">
+      <div class="search-input-wrap" style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); padding: 0.75rem 1.25rem; border-radius: var(--radius-full);">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--text-muted);"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="search" placeholder="Search blog articles..." id="blog-search-input" style="font-size: 0.95rem;" autocomplete="off" />
+      </div>
+    </div>
+
+    <!-- Blog Posts Grid (Compiled statically by build.js) -->
+    <div class="blog-grid reveal" id="blog-posts-root">
+      
+        <article class="card blog-card blog-card-article reveal" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+              <span class="project-badge">Performance</span>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">July 10, 2026</span>
+            </div>
+            <h3>Maximizing Frontend Performance in Heavy Web Applications</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem; line-height: 1.5;">The information provided below represents structural placeholders.
+      
+      Introduction to Web Reflows
+      In standard browser rendering cycles...</p>
+          </div>
+          <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 0.8rem; color: var(--text-muted);">By Example Author</span>
+            <a href="../../pages/blog/blog-1.html" class="btn btn-secondary btn-sm">Read Post</a>
+          </div>
+        </article>
+        
+
+        <article class="card blog-card blog-card-article reveal" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+              <span class="project-badge">Design Systems</span>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">July 01, 2026</span>
+            </div>
+            <h3>Why Design Systems Fail: Key Anti-Patterns to Avoid</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem; line-height: 1.5;">Defining the Core Problem
+      A design system represents a shared language between designers and developers. However, many systems fail due to rigid...</p>
+          </div>
+          <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 0.8rem; color: var(--text-muted);">By Example Author</span>
+            <a href="../../pages/blog/blog-2.html" class="btn btn-secondary btn-sm">Read Post</a>
+          </div>
+        </article>
+        
+
+        <article class="card blog-card blog-card-article reveal" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+              <span class="project-badge">Real-time Apps</span>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">June 25, 2026</span>
+            </div>
+            <h3>Demystifying Operational Transformation in Multiplayer Web Editors</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem; line-height: 1.5;">Real-Time Collaboration Needs
+      Multiplayer editing requires synchronizing states between distant browsers without overwriting user keyboard input...</p>
+          </div>
+          <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 0.8rem; color: var(--text-muted);">By Example Author</span>
+            <a href="../../pages/blog/blog-3.html" class="btn btn-secondary btn-sm">Read Post</a>
+          </div>
+        </article>
+        
+
+        <article class="card blog-card blog-card-article reveal" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+              <span class="project-badge">CSS Architecture</span>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">June 18, 2026</span>
+            </div>
+            <h3>The Evolution of CSS: Container Queries and Scope Rules</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem; line-height: 1.5;">Moving Beyond Media Queries
+      For years, frontend developers relied on viewport-based media queries to align sidebars and cards. This became probl...</p>
+          </div>
+          <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 0.8rem; color: var(--text-muted);">By Example Author</span>
+            <a href="../../pages/blog/blog-4.html" class="btn btn-secondary btn-sm">Read Post</a>
+          </div>
+        </article>
+        
+
+        <article class="card blog-card blog-card-article reveal" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+              <span class="project-badge">Accessibility</span>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">June 10, 2026</span>
+            </div>
+            <h3>Building Accessible Web Forms for Diverse Audiences</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem; line-height: 1.5;">Web Form Accessibility Basics
+      Accessible forms are easy to navigate with keyboards, announce inputs correctly to screen readers, and provide leg...</p>
+          </div>
+          <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 0.8rem; color: var(--text-muted);">By Example Author</span>
+            <a href="../../pages/blog/blog-5.html" class="btn btn-secondary btn-sm">Read Post</a>
+          </div>
+        </article>
+        
+
+        <article class="card blog-card blog-card-article reveal" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+              <span class="project-badge">Typography</span>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">June 02, 2026</span>
+            </div>
+            <h3>Unifying Cross-Platform Typography: Lessons from a Designer</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem; line-height: 1.5;">Scale Systems Overview
+      Unified typography relies on clear hierarchy ratios (e.g. Major Third or Golden Ratio) to ensure that headings scale prop...</p>
+          </div>
+          <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 0.8rem; color: var(--text-muted);">By Example Author</span>
+            <a href="../../pages/blog/blog-6.html" class="btn btn-secondary btn-sm">Read Post</a>
+          </div>
+        </article>
+        
+
+        <article class="card blog-card blog-card-article reveal" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+              <span class="project-badge">WebGL</span>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">May 25, 2026</span>
+            </div>
+            <h3>How to Optimize WebGL Renders for Mobile Web Viewports</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem; line-height: 1.5;">Mobile GPU Limitations
+      WebGL lets web apps render 3D scenes, but mobile GPUs lack the cooling capacity and memory bandwidth of desktop cards, re...</p>
+          </div>
+          <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 0.8rem; color: var(--text-muted);">By Example Author</span>
+            <a href="../../pages/blog/blog-7.html" class="btn btn-secondary btn-sm">Read Post</a>
+          </div>
+        </article>
+        
+
+        <article class="card blog-card blog-card-article reveal" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+              <span class="project-badge">DevOps</span>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">May 18, 2026</span>
+            </div>
+            <h3>A Guide to Serverless Deployments with CI/CD Pipelines</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem; line-height: 1.5;">Serverless Benefits
+      Serverless computing runs microservices on demand, reducing hosting bills by turning off unused containers during quiet hour...</p>
+          </div>
+          <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 0.8rem; color: var(--text-muted);">By Example Author</span>
+            <a href="../../pages/blog/blog-8.html" class="btn btn-secondary btn-sm">Read Post</a>
+          </div>
+        </article>
+        
+
+        <article class="card blog-card blog-card-article reveal" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+              <span class="project-badge">Web Audio</span>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">May 10, 2026</span>
+            </div>
+            <h3>Understanding Web Audio Nodes and Synthesizer Workloads</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem; line-height: 1.5;">Web Audio API Node Graph
+      The Web Audio API builds sound pipelines using a directed node graph. Audio source nodes connect to filter nodes, which...</p>
+          </div>
+          <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 0.8rem; color: var(--text-muted);">By Example Author</span>
+            <a href="../../pages/blog/blog-9.html" class="btn btn-secondary btn-sm">Read Post</a>
+          </div>
+        </article>
+        
+
+        <article class="card blog-card blog-card-article reveal" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+              <span class="project-badge">Cybersecurity</span>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">May 01, 2026</span>
+            </div>
+            <h3>Simplifying Threat Analytics: Interactive Node Clustering Guidelines</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem; line-height: 1.5;">The Problem of Dense Security Logs
+      Firewall tracking feeds output millions of records daily, burying key server intrusions under lists of routin...</p>
+          </div>
+          <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 0.8rem; color: var(--text-muted);">By Example Author</span>
+            <a href="../../pages/blog/blog-10.html" class="btn btn-secondary btn-sm">Read Post</a>
+          </div>
+        </article>
+        
+
+        <article class="card blog-card blog-card-article reveal" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+              <span class="project-badge">State Management</span>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">April 24, 2026</span>
+            </div>
+            <h3>State Management in Modern Web Applications: Choosing the Right Strategy</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem; line-height: 1.5;">Local vs. Global State
+      Keep form values and menu toggle states local. Only hoist credentials, settings, or shared resources to global state stor...</p>
+          </div>
+          <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 0.8rem; color: var(--text-muted);">By Example Author</span>
+            <a href="../../pages/blog/blog-11.html" class="btn btn-secondary btn-sm">Read Post</a>
+          </div>
+        </article>
+        
+
+        <article class="card blog-card blog-card-article reveal" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+              <span class="project-badge">Design Systems</span>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">April 18, 2026</span>
+            </div>
+            <h3>Designing Premium Glassmorphism Layouts: A Style Guide Review</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem; line-height: 1.5;">Glassmorphism Basics
+      Glassmorphic design overlays semi-transparent layers on colorful glowing shapes, creating UI layouts that feel premium and ...</p>
+          </div>
+          <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 0.8rem; color: var(--text-muted);">By Example Author</span>
+            <a href="../../pages/blog/blog-12.html" class="btn btn-secondary btn-sm">Read Post</a>
+          </div>
+        </article>
+        
+
+        <article class="card blog-card blog-card-article reveal" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+              <span class="project-badge">WebAssembly</span>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">April 10, 2026</span>
+            </div>
+            <h3>Unlocking WebAssembly Power for Client-Side Operations</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem; line-height: 1.5;">Why WebAssembly?
+      WebAssembly (Wasm) lets compiled binaries execute inside web environments near native speeds, bypassing heavy Javascript parsin...</p>
+          </div>
+          <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 0.8rem; color: var(--text-muted);">By Example Author</span>
+            <a href="../../pages/blog/blog-13.html" class="btn btn-secondary btn-sm">Read Post</a>
+          </div>
+        </article>
+        
+
+        <article class="card blog-card blog-card-article reveal" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+              <span class="project-badge">SEO</span>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">April 02, 2026</span>
+            </div>
+            <h3>SEO Best Practices for Headless Websites: Semantic Elements Matter</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem; line-height: 1.5;">SEO in Single Page Apps
+      Search engines can execute Javascript scripts, but relying on complex frontend renders delays indexing. Prerendering met...</p>
+          </div>
+          <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 0.8rem; color: var(--text-muted);">By Example Author</span>
+            <a href="../../pages/blog/blog-14.html" class="btn btn-secondary btn-sm">Read Post</a>
+          </div>
+        </article>
+        
+
+        <article class="card blog-card blog-card-article reveal" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+              <span class="project-badge">Architecture</span>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">March 26, 2026</span>
+            </div>
+            <h3>Managing Micro-Frontends in Enterprise Product Teams</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem; line-height: 1.5;">The Micro-Frontend Pitch
+      Micro-frontends slice large apps into separate codebase components, allowing distinct developer teams to deploy layouts...</p>
+          </div>
+          <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 0.8rem; color: var(--text-muted);">By Example Author</span>
+            <a href="../../pages/blog/blog-15.html" class="btn btn-secondary btn-sm">Read Post</a>
+          </div>
+        </article>
+        
+
+        <article class="card blog-card blog-card-article reveal" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+              <span class="project-badge">Backend Integration</span>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">March 18, 2026</span>
+            </div>
+            <h3>Introduction to Edge Caching Strategies for GraphQL Interfaces</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem; line-height: 1.5;">GraphQL Cache Hurdles
+      Unlike REST endpoints, GraphQL requests traditionally use HTTP POST operations, preventing standard browser proxies and CD...</p>
+          </div>
+          <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 0.8rem; color: var(--text-muted);">By Example Author</span>
+            <a href="../../pages/blog/blog-16.html" class="btn btn-secondary btn-sm">Read Post</a>
+          </div>
+        </article>
+        
+
+        <article class="card blog-card blog-card-article reveal" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+              <span class="project-badge">Frontend Motion</span>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">March 10, 2026</span>
+            </div>
+            <h3>Creating Tactile Web Components with Framer Motion Physics</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem; line-height: 1.5;">Tactile Motion Design
+      Transitions should match natural physical properties. Adding weight and spring dynamics to panels makes web interfaces fee...</p>
+          </div>
+          <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 0.8rem; color: var(--text-muted);">By Example Author</span>
+            <a href="../../pages/blog/blog-17.html" class="btn btn-secondary btn-sm">Read Post</a>
+          </div>
+        </article>
+        
+
+        <article class="card blog-card blog-card-article reveal" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+              <span class="project-badge">Canvas Development</span>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">March 02, 2026</span>
+            </div>
+            <h3>Mastering the Canvas API for Smooth Graphical Interfaces</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem; line-height: 1.5;">Canvas Performance Basics
+      Direct pixel rendering via the Canvas API bypasses DOM complexities, representing the standard choice for interactive ...</p>
+          </div>
+          <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 0.8rem; color: var(--text-muted);">By Example Author</span>
+            <a href="../../pages/blog/blog-18.html" class="btn btn-secondary btn-sm">Read Post</a>
+          </div>
+        </article>
+        
+
+        <article class="card blog-card blog-card-article reveal" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+              <span class="project-badge">Internet of Things</span>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">February 24, 2026</span>
+            </div>
+            <h3>The Role of WebRTC in Real-time Sensor Control Portals</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem; line-height: 1.5;">Low Latency Requirements
+      Operating remote mechanical hardware requires sub-second video feed feedback, making typical HTTP stream latencies unus...</p>
+          </div>
+          <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 0.8rem; color: var(--text-muted);">By Example Author</span>
+            <a href="../../pages/blog/blog-19.html" class="btn btn-secondary btn-sm">Read Post</a>
+          </div>
+        </article>
+        
+
+        <article class="card blog-card blog-card-article reveal" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+              <span class="project-badge">Performance</span>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">February 15, 2026</span>
+            </div>
+            <h3>Optimizing Next.js for Production Bundle Audits</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem; line-height: 1.5;">Inspecting Webpack Bundles
+      Webpack bundle analyzers map compiled size properties, highlighting large external packages that can be reduced or re...</p>
+          </div>
+          <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 0.8rem; color: var(--text-muted);">By Example Author</span>
+            <a href="../../pages/blog/blog-20.html" class="btn btn-secondary btn-sm">Read Post</a>
+          </div>
+        </article>
+        
+    </div>
+  </div>
+</section>
+
+<!-- Client-side filter script -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('blog-search-input');
+    const articles = document.querySelectorAll('#blog-posts-root .blog-card-article');
+
+    if (!searchInput) return;
+
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.trim().toLowerCase();
+      
+      articles.forEach(article => {
+        const title = article.querySelector('h3').textContent.toLowerCase();
+        const category = article.querySelector('.project-badge').textContent.toLowerCase();
+        const snippet = article.querySelector('p').textContent.toLowerCase();
+
+        if (title.includes(query) || category.includes(query) || snippet.includes(query)) {
+          article.style.display = 'flex';
+        } else {
+          article.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>
+    </main>
+
+    <!-- Interactive Search Modal -->
+    <dialog class="search-modal" id="search-modal" aria-labelledby="search-modal-title">
+      <div class="search-modal-card">
+        <header class="search-modal-header">
+          <h2 id="search-modal-title" class="sr-only">Search Website</h2>
+          <div class="search-input-wrap">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="search" placeholder="Type here to search pages, projects, articles..." id="search-input" autocomplete="off" />
+          </div>
+          <button class="search-modal-close" aria-label="Close search" id="close-search-btn">✕</button>
+        </header>
+        <div class="search-results-wrap" id="search-results">
+          <p class="search-hint">Type search queries to locate pages, articles, and resources.</p>
+        </div>
+      </div>
+    </dialog>
+
+    <!-- Global Footer -->
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-brand-column">
+          <a class="brand brand--footer" href="../../index.html">Northstar Studio</a>
+          <p class="footer-copy">Fictional portfolio demonstration showcasing advanced frontend performance, accessibility standards, and modern clean layouts.</p>
+          <div class="social-links">
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub (External Link)">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (External Link)">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter (External Link)">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-nav-column">
+          <h3>Quick Links</h3>
+          <nav class="footer-links" aria-label="Footer Quick Links">
+            <a href="../../index.html">Home</a>
+            <a href="../../pages/about.html">About Us</a>
+            <a href="../../pages/projects/projects.html">Projects</a>
+            <a href="../../pages/services.html">Services</a>
+            <a href="../../pages/skills.html">Skills</a>
+            <a href="../../pages/resume.html">Resume</a>
+            <a href="../../pages/blog/blog.html">Blog</a>
+            <a href="../../pages/contact.html">Contact</a>
+          </nav>
+        </div>
+
+        <div class="footer-nav-column">
+          <h3>Information</h3>
+          <nav class="footer-links" aria-label="Footer Information Links">
+            <a href="../../pages/faq.html">FAQ Help</a>
+            <a href="../../pages/pricing.html">Pricing Plans</a>
+            <a href="../../pages/process.html">Our Process</a>
+            <a href="../../pages/testimonials.html">Testimonials</a>
+            <a href="../../pages/case-studies.html">Case Studies</a>
+            <a href="../../pages/resources/resources.html">Resources</a>
+            <a href="../../pages/resources/documentation.html">Docs Hub</a>
+            <a href="../../pages/gallery.html">Visual Gallery</a>
+          </nav>
+        </div>
+
+        <div class="footer-nav-column">
+          <h3>Utilities</h3>
+          <nav class="footer-links" aria-label="Footer Utility Links">
+            <a href="../../pages/resources/downloads.html">Downloads</a>
+            <a href="../../pages/resources/certifications.html">Certifications</a>
+            <a href="../../pages/experience.html">Experience Log</a>
+            <a href="../../pages/education.html">Education Record</a>
+            <a href="../../pages/resources/open-source.html">Open Source</a>
+            <a href="../../pages/resources/clients.html">Clients Index</a>
+            <a href="../../pages/resources/media-kit.html">Media Kit</a>
+            <a href="../../pages/resources/press.html">Press Center</a>
+            <a href="../../pages/support.html">Tech Support</a>
+          </nav>
+        </div>
+
+        <div class="footer-newsletter-column">
+          <h3>Stay Updated</h3>
+          <p>Join our newsletter for sample announcements and visual system tutorials.</p>
+          <form class="newsletter-form" id="newsletter-form" novalidate>
+            <div class="newsletter-input-group">
+              <input type="email" id="newsletter-email" placeholder="you@example.com" aria-label="Newsletter email address" required />
+              <button type="submit" class="btn btn-primary btn-newsletter">Join</button>
+            </div>
+            <p class="newsletter-status" id="newsletter-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+
+      <div class="container footer-bottom">
+        <p class="copyright">&copy; <span id="year"></span> Northstar Studio. Clearly marked fictional portfolio demonstration. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="../../pages/legal/privacy.html">Privacy Policy</a>
+          <a href="../../pages/legal/terms.html">Terms & Conditions</a>
+          <a href="../../pages/legal/cookie-policy.html">Cookie Policy</a>
+          <a href="../../pages/sitemap.html">Sitemap</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Cookie Consent Banner -->
+    <div class="cookie-banner" id="cookie-banner" role="region" aria-label="Cookie consent banner">
+      <div class="container cookie-content-wrap">
+        <p>This website represents a fictional mockup layout. We use local state variables to simulate visual cookies. Visit our <a href="../../pages/legal/cookie-policy.html">Cookie Policy</a> for information.</p>
+        <div class="cookie-actions">
+          <button class="btn btn-secondary btn-sm" id="cookie-decline">Decline</button>
+          <button class="btn btn-primary btn-sm" id="cookie-accept">Accept All</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Back to top button -->
+    <a href="#top" class="back-to-top" aria-label="Back to top" id="back-to-top-btn">↑</a>
+
+    <!-- Main JavaScript file -->
+    <script src="../../assets/js/script.js"></script>
+  </body>
+</html>

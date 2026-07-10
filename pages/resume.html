@@ -3,23 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="{{description}}" />
+    <meta name="description" content="Fictional history of professional roles, milestones, and education." />
     <meta name="theme-color" content="#030712" />
-    <link rel="canonical" href="{{canonical}}" />
+    <link rel="canonical" href="https://northstar.example.com/pages/resume.html" />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="{{canonical}}" />
-    <meta property="og:title" content="{{title}}" />
-    <meta property="og:description" content="{{description}}" />
-    <meta property="og:image" content="{{path_prefix}}{{og_image}}" />
+    <meta property="og:url" content="https://northstar.example.com/pages/resume.html" />
+    <meta property="og:title" content="Resume & Experience | Northstar Studio" />
+    <meta property="og:description" content="Fictional history of professional roles, milestones, and education." />
+    <meta property="og:image" content="../assets/images/project-placeholder.svg" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="{{canonical}}" />
-    <meta property="twitter:title" content="{{title}}" />
-    <meta property="twitter:description" content="{{description}}" />
-    <meta property="twitter:image" content="{{path_prefix}}{{og_image}}" />
+    <meta property="twitter:url" content="https://northstar.example.com/pages/resume.html" />
+    <meta property="twitter:title" content="Resume & Experience | Northstar Studio" />
+    <meta property="twitter:description" content="Fictional history of professional roles, milestones, and education." />
+    <meta property="twitter:image" content="../assets/images/project-placeholder.svg" />
 
     <!-- Schema.org JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -36,14 +36,14 @@
     }
     </script>
 
-    <title>{{title}}</title>
+    <title>Resume & Experience | Northstar Studio</title>
     
     <!-- Google Fonts: Outfit (headings) & Inter (body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="{{path_prefix}}assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
   </head>
   <body id="top">
     <!-- Skip to Main Content Link for Accessibility -->
@@ -55,7 +55,7 @@
     <!-- Sticky Header Navigation -->
     <header class="site-header">
       <div class="container nav-wrap">
-        <a class="brand" href="{{path_prefix}}index.html">Northstar Studio</a>
+        <a class="brand" href="../index.html">Northstar Studio</a>
         
         <div class="nav-actions">
           <!-- Live Interactive Search button -->
@@ -74,21 +74,83 @@
         </div>
 
         <nav class="site-nav" id="site-nav">
-          <a href="{{path_prefix}}index.html" data-nav="home">Home</a>
-          <a href="{{path_prefix}}pages/about.html" data-nav="about">About</a>
-          <a href="{{path_prefix}}pages/projects/projects.html" data-nav="projects">Projects</a>
-          <a href="{{path_prefix}}pages/services.html" data-nav="services">Services</a>
-          <a href="{{path_prefix}}pages/skills.html" data-nav="skills">Skills</a>
-          <a href="{{path_prefix}}pages/resume.html" data-nav="resume">Resume</a>
-          <a href="{{path_prefix}}pages/blog/blog.html" data-nav="blog">Blog</a>
-          <a href="{{path_prefix}}pages/contact.html" data-nav="contact">Contact</a>
+          <a href="../index.html" data-nav="home">Home</a>
+          <a href="../pages/about.html" data-nav="about">About</a>
+          <a href="../pages/projects/projects.html" data-nav="projects">Projects</a>
+          <a href="../pages/services.html" data-nav="services">Services</a>
+          <a href="../pages/skills.html" data-nav="skills">Skills</a>
+          <a href="../pages/resume.html" data-nav="resume">Resume</a>
+          <a href="../pages/blog/blog.html" data-nav="blog">Blog</a>
+          <a href="../pages/contact.html" data-nav="contact">Contact</a>
         </nav>
       </div>
     </header>
 
     <!-- Main Content Area -->
     <main id="main-content" tabindex="-1">
-      {{content}}
+      <section class="hero">
+  <div class="container hero-grid">
+    <div class="reveal">
+      <p class="eyebrow">Professional Timeline</p>
+      <h1>Experience & milestones overview.</h1>
+      <p style="color: var(--text-muted); margin-bottom: 2rem;">This page details academic courses, design agency roles, and core credentials formatted in a clean timeline layout. All credentials represent fictional demo entities.</p>
+      <div style="display: flex; gap: 1rem;">
+        <a class="btn btn-primary" href="../pages/resources/downloads.html">Download PDF Resume</a>
+        <a class="btn btn-secondary" href="../pages/resources/certifications.html">View Certifications</a>
+      </div>
+    </div>
+    <div class="reveal" style="display: flex; flex-direction: column; gap: 1rem;">
+      <div class="card">
+        <h3>Core Experience Summary</h3>
+        <p style="color: var(--text-muted); margin-top: 0.5rem; font-size: 0.925rem;">Specializing in frontend performance profiles, dynamic layouts, and semantic tags. Over 8 mock years of visual design systems deployment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-heading reveal">
+      <p class="eyebrow">Chronology</p>
+      <h2>Fictional Employment Log</h2>
+    </div>
+    
+    <div class="timeline reveal">
+      <!-- Item 1 -->
+      <article class="timeline-item">
+        <div class="timeline-dot"></div>
+        <header class="timeline-meta">
+          <span class="timeline-date">2024 — Present</span>
+          <span class="timeline-org">Example Web Agency (Demo)</span>
+        </header>
+        <h3 class="timeline-title">Lead Frontend Architect</h3>
+        <p style="color: var(--text-muted); max-width: 740px;">Led developer groups in building accessible interface dashboards. Oversaw transitions to serverless edge compilation frameworks, shortening mock asset delivery times by 35%.</p>
+      </article>
+
+      <!-- Item 2 -->
+      <article class="timeline-item">
+        <div class="timeline-dot"></div>
+        <header class="timeline-meta">
+          <span class="timeline-date">2021 — 2024</span>
+          <span class="timeline-org">Sample Design Studio (Demo)</span>
+        </header>
+        <h3 class="timeline-title">Senior UI UI Designer</h3>
+        <p style="color: var(--text-muted); max-width: 740px;">Drafted responsive design tokens and high-fidelity wireframes in Figma. Coordinated token updates with developer engineers to ensure visual unity across production components.</p>
+      </article>
+
+      <!-- Item 3 -->
+      <article class="timeline-item">
+        <div class="timeline-dot"></div>
+        <header class="timeline-meta">
+          <span class="timeline-date">2018 — 2021</span>
+          <span class="timeline-org">Fictional Startup Labs (Demo)</span>
+        </header>
+        <h3 class="timeline-title">Frontend Developer</h3>
+        <p style="color: var(--text-muted); max-width: 740px;">Wrote semantic HTML markup and layout files for consumer e-commerce products. Integrated payment forms and verified input validations using client-side scripts.</p>
+      </article>
+    </div>
+  </div>
+</section>
     </main>
 
     <!-- Interactive Search Modal -->
@@ -112,7 +174,7 @@
     <footer class="site-footer">
       <div class="container footer-grid">
         <div class="footer-brand-column">
-          <a class="brand brand--footer" href="{{path_prefix}}index.html">Northstar Studio</a>
+          <a class="brand brand--footer" href="../index.html">Northstar Studio</a>
           <p class="footer-copy">Fictional portfolio demonstration showcasing advanced frontend performance, accessibility standards, and modern clean layouts.</p>
           <div class="social-links">
             <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub (External Link)">
@@ -130,43 +192,43 @@
         <div class="footer-nav-column">
           <h3>Quick Links</h3>
           <nav class="footer-links" aria-label="Footer Quick Links">
-            <a href="{{path_prefix}}index.html">Home</a>
-            <a href="{{path_prefix}}pages/about.html">About Us</a>
-            <a href="{{path_prefix}}pages/projects/projects.html">Projects</a>
-            <a href="{{path_prefix}}pages/services.html">Services</a>
-            <a href="{{path_prefix}}pages/skills.html">Skills</a>
-            <a href="{{path_prefix}}pages/resume.html">Resume</a>
-            <a href="{{path_prefix}}pages/blog/blog.html">Blog</a>
-            <a href="{{path_prefix}}pages/contact.html">Contact</a>
+            <a href="../index.html">Home</a>
+            <a href="../pages/about.html">About Us</a>
+            <a href="../pages/projects/projects.html">Projects</a>
+            <a href="../pages/services.html">Services</a>
+            <a href="../pages/skills.html">Skills</a>
+            <a href="../pages/resume.html">Resume</a>
+            <a href="../pages/blog/blog.html">Blog</a>
+            <a href="../pages/contact.html">Contact</a>
           </nav>
         </div>
 
         <div class="footer-nav-column">
           <h3>Information</h3>
           <nav class="footer-links" aria-label="Footer Information Links">
-            <a href="{{path_prefix}}pages/faq.html">FAQ Help</a>
-            <a href="{{path_prefix}}pages/pricing.html">Pricing Plans</a>
-            <a href="{{path_prefix}}pages/process.html">Our Process</a>
-            <a href="{{path_prefix}}pages/testimonials.html">Testimonials</a>
-            <a href="{{path_prefix}}pages/case-studies.html">Case Studies</a>
-            <a href="{{path_prefix}}pages/resources/resources.html">Resources</a>
-            <a href="{{path_prefix}}pages/resources/documentation.html">Docs Hub</a>
-            <a href="{{path_prefix}}pages/gallery.html">Visual Gallery</a>
+            <a href="../pages/faq.html">FAQ Help</a>
+            <a href="../pages/pricing.html">Pricing Plans</a>
+            <a href="../pages/process.html">Our Process</a>
+            <a href="../pages/testimonials.html">Testimonials</a>
+            <a href="../pages/case-studies.html">Case Studies</a>
+            <a href="../pages/resources/resources.html">Resources</a>
+            <a href="../pages/resources/documentation.html">Docs Hub</a>
+            <a href="../pages/gallery.html">Visual Gallery</a>
           </nav>
         </div>
 
         <div class="footer-nav-column">
           <h3>Utilities</h3>
           <nav class="footer-links" aria-label="Footer Utility Links">
-            <a href="{{path_prefix}}pages/resources/downloads.html">Downloads</a>
-            <a href="{{path_prefix}}pages/resources/certifications.html">Certifications</a>
-            <a href="{{path_prefix}}pages/experience.html">Experience Log</a>
-            <a href="{{path_prefix}}pages/education.html">Education Record</a>
-            <a href="{{path_prefix}}pages/resources/open-source.html">Open Source</a>
-            <a href="{{path_prefix}}pages/resources/clients.html">Clients Index</a>
-            <a href="{{path_prefix}}pages/resources/media-kit.html">Media Kit</a>
-            <a href="{{path_prefix}}pages/resources/press.html">Press Center</a>
-            <a href="{{path_prefix}}pages/support.html">Tech Support</a>
+            <a href="../pages/resources/downloads.html">Downloads</a>
+            <a href="../pages/resources/certifications.html">Certifications</a>
+            <a href="../pages/experience.html">Experience Log</a>
+            <a href="../pages/education.html">Education Record</a>
+            <a href="../pages/resources/open-source.html">Open Source</a>
+            <a href="../pages/resources/clients.html">Clients Index</a>
+            <a href="../pages/resources/media-kit.html">Media Kit</a>
+            <a href="../pages/resources/press.html">Press Center</a>
+            <a href="../pages/support.html">Tech Support</a>
           </nav>
         </div>
 
@@ -186,10 +248,10 @@
       <div class="container footer-bottom">
         <p class="copyright">&copy; <span id="year"></span> Northstar Studio. Clearly marked fictional portfolio demonstration. All rights reserved.</p>
         <div class="footer-bottom-links">
-          <a href="{{path_prefix}}pages/legal/privacy.html">Privacy Policy</a>
-          <a href="{{path_prefix}}pages/legal/terms.html">Terms & Conditions</a>
-          <a href="{{path_prefix}}pages/legal/cookie-policy.html">Cookie Policy</a>
-          <a href="{{path_prefix}}pages/sitemap.html">Sitemap</a>
+          <a href="../pages/legal/privacy.html">Privacy Policy</a>
+          <a href="../pages/legal/terms.html">Terms & Conditions</a>
+          <a href="../pages/legal/cookie-policy.html">Cookie Policy</a>
+          <a href="../pages/sitemap.html">Sitemap</a>
         </div>
       </div>
     </footer>
@@ -197,7 +259,7 @@
     <!-- Cookie Consent Banner -->
     <div class="cookie-banner" id="cookie-banner" role="region" aria-label="Cookie consent banner">
       <div class="container cookie-content-wrap">
-        <p>This website represents a fictional mockup layout. We use local state variables to simulate visual cookies. Visit our <a href="{{path_prefix}}pages/legal/cookie-policy.html">Cookie Policy</a> for information.</p>
+        <p>This website represents a fictional mockup layout. We use local state variables to simulate visual cookies. Visit our <a href="../pages/legal/cookie-policy.html">Cookie Policy</a> for information.</p>
         <div class="cookie-actions">
           <button class="btn btn-secondary btn-sm" id="cookie-decline">Decline</button>
           <button class="btn btn-primary btn-sm" id="cookie-accept">Accept All</button>
@@ -209,6 +271,6 @@
     <a href="#top" class="back-to-top" aria-label="Back to top" id="back-to-top-btn">↑</a>
 
     <!-- Main JavaScript file -->
-    <script src="{{path_prefix}}assets/js/script.js"></script>
+    <script src="../assets/js/script.js"></script>
   </body>
 </html>

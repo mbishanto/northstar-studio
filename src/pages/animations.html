@@ -1,0 +1,48 @@
+<!--{
+  "title": "Transitions & Animations | Northstar Studio",
+  "description": "Demonstrations of responsive CSS animations and scroll triggers (fictional log).",
+  "active_nav": "",
+  "dir": "pages/resources"
+}-->
+<section class="hero">
+  <div class="container">
+    <div class="section-heading reveal">
+      <p class="eyebrow">Visual Dynamics</p>
+      <h1>CSS Transitions & Animations</h1>
+      <p>This layout outlines transition variables, hover cards, and custom keyframes configured in our portfolio templates. All animations represent fictional demo setups.</p>
+    </div>
+
+    <div class="grid-3 reveal">
+      
+      <!-- Card 1: Float Animation -->
+      <article class="card" style="display: flex; flex-direction: column; gap: 0.75rem;">
+        <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--accent-gradient); animation: demo-float 4s ease-in-out infinite alternate; margin-bottom: 1rem;"></div>
+        <h3>Simulated Floating</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Runs a keyframe float transition dynamically, matching the floating gradients on the homepage hero background meshes.</p>
+      </article>
+
+      <!-- Card 2: Scale Animation -->
+      <article class="card" style="display: flex; flex-direction: column; gap: 0.75rem; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);">
+        <div style="font-size: 2rem; color: var(--accent-cyan); margin-bottom: 0.75rem;">⚡</div>
+        <h3>Micro-Interaction Hover</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Hovering over this component scales it slightly and triggers cyan border highlights. Standard focus borders are WCAG compliant.</p>
+      </article>
+
+      <!-- Card 3: Fade in reveal -->
+      <article class="card reveal" style="display: flex; flex-direction: column; gap: 0.75rem;">
+        <div style="font-size: 2rem; color: var(--accent-cyan); margin-bottom: 0.75rem;">✦</div>
+        <h3>Scroll Reveal Entry</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Utilizes native IntersectionObserver coordinates to add a visibility tag, fading this card block in smoothly as you scroll.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- Additional page-specific animation styles -->
+<style>
+  @keyframes demo-float {
+    from { transform: translateY(0); }
+    to { transform: translateY(-12px); }
+  }
+</style>

@@ -1,9 +1,11 @@
 // c:\Users\NAK\coding code - badhan\build.js
 /**
- * Northstar Studio Static Site Compiler
- * Parses page files in src/pages/, injects them into layout.html,
- * dynamically generates 12 unique project details pages and 20 blog articles,
- * and compiles sitemap.xml and robots.txt in the root workspace directory.
+ * Northstar Studio Reorganized Site Compiler
+ * Compiles pages, dynamic case studies, dynamic blog articles, sitemaps, and robots.txt.
+ * Places HTML files under categorized directories (/pages/, /pages/blog/, /pages/projects/, etc.),
+ * and copies static source assets from src/assets/ to assets/.
+ * Automatically calculates relative depth path prefixes for layout variable substitutions.
+ * Automatically rewrites relative links in body contents to match the new nested folder paths.
  */
 
 const fs = require('fs');
@@ -13,15 +15,231 @@ const path = require('path');
 const projects = require('./src/data/projects.js');
 const blog = require('./src/data/blog.js');
 
-// Paths
+// Source paths
 const TEMPLATES_DIR = path.join(__dirname, 'src/templates');
 const PAGES_DIR = path.join(__dirname, 'src/pages');
-const DIST_DIR = __dirname; // Output in workspace root
+const SRC_ASSETS_DIR = path.join(__dirname, 'src/assets');
+const DIST_DIR = __dirname; // Root workspace directory
+
+// Reorganized categories routing table
+const dirFallbackMap = {
+  'index.html': '',
+  
+  // Blog
+  'blog.html': 'pages/blog',
+  
+  // Projects
+  'projects.html': 'pages/projects',
+  'project-details.html': 'pages/projects',
+  
+  // Legal
+  'privacy.html': 'pages/legal',
+  'terms.html': 'pages/legal',
+  'cookie-policy.html': 'pages/legal',
+  'accessibility.html': 'pages/legal',
+  'licenses.html': 'pages/legal',
+  
+  // Resources
+  'resources.html': 'pages/resources',
+  'documentation.html': 'pages/resources',
+  'downloads.html': 'pages/resources',
+  'certifications.html': 'pages/resources',
+  'open-source.html': 'pages/resources',
+  'clients.html': 'pages/resources',
+  'media-kit.html': 'pages/resources',
+  'press.html': 'pages/resources',
+  'style-guide.html': 'pages/resources',
+  'design-system.html': 'pages/resources',
+  'components.html': 'pages/resources',
+  'ui-showcase.html': 'pages/resources',
+  'animations.html': 'pages/resources',
+  'roadmap.html': 'pages/resources',
+  'api-docs.html': 'pages/resources',
+  'developer-notes.html': 'pages/resources',
+  'toolkit.html': 'pages/resources',
+  'career.html': 'pages/resources',
+  'newsletter.html': 'pages/resources',
+  
+  // Defaults (all others compile to pages/)
+};
+
+// Map of old root filename links to their new reorganized target locations
+const pathRewriteMap = {
+  'index.html': 'index.html',
+  'about.html': 'pages/about.html',
+  'services.html': 'pages/services.html',
+  'skills.html': 'pages/skills.html',
+  'resume.html': 'pages/resume.html',
+  'contact.html': 'pages/contact.html',
+  'faq.html': 'pages/faq.html',
+  'pricing.html': 'pages/pricing.html',
+  'process.html': 'pages/process.html',
+  'testimonials.html': 'pages/testimonials.html',
+  'case-studies.html': 'pages/case-studies.html',
+  'gallery.html': 'pages/gallery.html',
+  'experience.html': 'pages/experience.html',
+  'education.html': 'pages/education.html',
+  'sitemap.html': 'pages/sitemap.html',
+  'search.html': 'pages/search.html',
+  'coming-soon.html': 'pages/coming-soon.html',
+  'changelog.html': 'pages/changelog.html',
+  'support.html': 'pages/support.html',
+  'thank-you.html': 'pages/thank-you.html',
+  '404.html': 'pages/404.html',
+  '500.html': 'pages/500.html',
+  'maintenance.html': 'pages/maintenance.html',
+  
+  // Blog
+  'blog.html': 'pages/blog/blog.html',
+  
+  // Projects
+  'projects.html': 'pages/projects/projects.html',
+  'project-details.html': 'pages/projects/project-details.html',
+  
+  // Legal
+  'privacy.html': 'pages/legal/privacy.html',
+  'terms.html': 'pages/legal/terms.html',
+  'cookie-policy.html': 'pages/legal/cookie-policy.html',
+  'accessibility.html': 'pages/legal/accessibility.html',
+  'licenses.html': 'pages/legal/licenses.html',
+  
+  // Resources
+  'resources.html': 'pages/resources/resources.html',
+  'documentation.html': 'pages/resources/documentation.html',
+  'downloads.html': 'pages/resources/downloads.html',
+  'certifications.html': 'pages/resources/certifications.html',
+  'open-source.html': 'pages/resources/open-source.html',
+  'clients.html': 'pages/resources/clients.html',
+  'media-kit.html': 'pages/resources/media-kit.html',
+  'press.html': 'pages/resources/press.html',
+  'style-guide.html': 'pages/resources/style-guide.html',
+  'design-system.html': 'pages/resources/design-system.html',
+  'components.html': 'pages/resources/components.html',
+  'ui-showcase.html': 'pages/resources/ui-showcase.html',
+  'animations.html': 'pages/resources/animations.html',
+  'roadmap.html': 'pages/resources/roadmap.html',
+  'api-docs.html': 'pages/resources/api-docs.html',
+  'developer-notes.html': 'pages/resources/developer-notes.html',
+  'toolkit.html': 'pages/resources/toolkit.html',
+  'career.html': 'pages/resources/career.html',
+  'newsletter.html': 'pages/resources/newsletter.html',
+};
+
+// Helper: Ensure directory exists recursively
+const ensureDirectoryExistence = (filePath) => {
+  const dirname = path.dirname(filePath);
+  if (fs.existsSync(dirname)) {
+    return true;
+  }
+  ensureDirectoryExistence(dirname);
+  fs.mkdirSync(dirname);
+};
+
+// Helper: Copy directory content recursively
+function copyDirSync(src, dest) {
+  if (!fs.existsSync(src)) return;
+  fs.mkdirSync(dest, { recursive: true });
+  const entries = fs.readdirSync(src, { withFileTypes: true });
+
+  for (let entry of entries) {
+    const srcPath = path.join(src, entry.name);
+    const destPath = path.join(dest, entry.name);
+
+    if (entry.isDirectory()) {
+      copyDirSync(srcPath, destPath);
+    } else {
+      fs.copyFileSync(srcPath, destPath);
+    }
+  }
+}
+
+// Helper: Compute Path Prefix
+const getPathPrefix = (dir) => {
+  if (!dir) return '';
+  const depth = dir.split('/').filter(Boolean).length;
+  return '../'.repeat(depth);
+};
+
+// Link Rewriting Helper: scans body HTML strings and maps old paths to new directories
+function rewriteBodyLinks(bodyHtml, currentDir) {
+  const pathPrefix = getPathPrefix(currentDir);
+  
+  return bodyHtml.replace(/(<a\s+[^>]*href=["'])([^"']*)(["'])/gi, (match, p1, p2, p3) => {
+    let href = p2;
+    
+    // Skip absolute links, anchors, protocols, javascript triggers
+    if (
+      href.startsWith('http://') ||
+      href.startsWith('https://') ||
+      href.startsWith('mailto:') ||
+      href.startsWith('tel:') ||
+      href.startsWith('#') ||
+      href.startsWith('javascript:')
+    ) {
+      return match;
+    }
+
+    // Strip hash anchors
+    const parts = href.split('#');
+    const filename = parts[0];
+    const hash = parts[1] ? `#${parts[1]}` : '';
+
+    if (!filename) return match;
+
+    let targetPath = null;
+
+    // Check project-details matches
+    const projectMatch = filename.match(/^project-details-(\d+)\.html$/);
+    if (projectMatch) {
+      targetPath = `pages/projects/project-details-${projectMatch[1]}.html`;
+    }
+
+    // Check blog matches
+    const blogMatch = filename.match(/^blog-(\d+)\.html$/);
+    if (blogMatch) {
+      targetPath = `pages/blog/blog-${blogMatch[1]}.html`;
+    }
+
+    // Check generic routing map
+    if (!targetPath && pathRewriteMap[filename]) {
+      targetPath = pathRewriteMap[filename];
+    }
+
+    if (targetPath) {
+      const resolvedHref = `${pathPrefix}${targetPath}${hash}`;
+      return `${p1}${resolvedHref}${p3}`;
+    }
+
+    return match;
+  });
+}
 
 function build() {
-  console.log('Starting site compilation pipeline...');
+  console.log('Starting site reorganization compilation pipeline...');
 
-  // 1. Load layout template
+  // 1. Copy static assets from src/assets/ to assets/
+  console.log('Copying static assets into assets/ directory...');
+  fs.mkdirSync(path.join(DIST_DIR, 'assets/css'), { recursive: true });
+  fs.mkdirSync(path.join(DIST_DIR, 'assets/js'), { recursive: true });
+  fs.mkdirSync(path.join(DIST_DIR, 'assets/images'), { recursive: true });
+
+  // Copy style.css
+  const srcCss = path.join(SRC_ASSETS_DIR, 'css/style.css');
+  if (fs.existsSync(srcCss)) {
+    fs.copyFileSync(srcCss, path.join(DIST_DIR, 'assets/css/style.css'));
+  }
+  // Copy script.js
+  const srcJs = path.join(SRC_ASSETS_DIR, 'js/script.js');
+  if (fs.existsSync(srcJs)) {
+    fs.copyFileSync(srcJs, path.join(DIST_DIR, 'assets/js/script.js'));
+  }
+  // Copy images
+  const srcImagesDir = path.join(SRC_ASSETS_DIR, 'images');
+  if (fs.existsSync(srcImagesDir)) {
+    copyDirSync(srcImagesDir, path.join(DIST_DIR, 'assets/images'));
+  }
+
+  // 2. Load layout template
   const layoutPath = path.join(TEMPLATES_DIR, 'layout.html');
   if (!fs.existsSync(layoutPath)) {
     console.error('CRITICAL ERROR: layout.html layout wrapper is missing!');
@@ -36,7 +254,6 @@ function build() {
   const compilePage = (template, replacements) => {
     let result = template;
     Object.entries(replacements).forEach(([key, val]) => {
-      // Replace all occurrences of {{key}}
       result = result.split(`{{${key}}}`).join(val);
     });
     return result;
@@ -51,7 +268,6 @@ function build() {
 
     if (match) {
       try {
-        // Enforce JSON standard by adding outer braces
         meta = JSON.parse('{' + match[1] + '}');
         body = fileContent.replace(metaRegex, '').trim();
       } catch (err) {
@@ -61,7 +277,7 @@ function build() {
     return { meta, body };
   };
 
-  // 2. Compile Core 35 HTML Pages from src/pages/
+  // 3. Compile Core 50 HTML Pages from src/pages/
   const pageFiles = fs.readdirSync(PAGES_DIR).filter(file => file.endsWith('.html'));
 
   pageFiles.forEach(file => {
@@ -69,15 +285,19 @@ function build() {
     const content = fs.readFileSync(filePath, 'utf8');
     const { meta, body } = parsePageContent(content);
 
-    let finalBody = body;
+    // Resolve directory
+    const dir = meta.dir !== undefined ? meta.dir : (dirFallbackMap[file] !== undefined ? dirFallbackMap[file] : 'pages');
+    const pathPrefix = getPathPrefix(dir);
+
+    // Rewrite body links to support nesting
+    let finalBody = rewriteBodyLinks(body, dir);
 
     // Special injection for Blog Hub: render the list of 20 posts statically
     if (file === 'blog.html') {
       const blogPostsHtml = blog.map(post => {
-        // Extract plain text snippet from body tags
         const plainTextSnippet = post.body
-          .replace(/<[^>]*>/g, '') // remove HTML tags
-          .replace(/MANDATORY DISCLAIMER:[\s\S]*?\./, '') // remove disclaimer
+          .replace(/<[^>]*>/g, '')
+          .replace(/MANDATORY DISCLAIMER:[\s\S]*?\./, '')
           .trim()
           .slice(0, 150) + '...';
 
@@ -93,7 +313,7 @@ function build() {
           </div>
           <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
             <span style="font-size: 0.8rem; color: var(--text-muted);">By ${post.author}</span>
-            <a href="blog-${post.id}.html" class="btn btn-secondary btn-sm">Read Post</a>
+            <a href="${pathPrefix}pages/blog/blog-${post.id}.html" class="btn btn-secondary btn-sm">Read Post</a>
           </div>
         </article>
         `;
@@ -102,27 +322,34 @@ function build() {
       finalBody = finalBody.replace('{{blog_posts}}', blogPostsHtml);
     }
 
+    const pageRelativePath = dir ? `${dir}/${file}` : file;
+
     const pageVariables = {
       title: meta.title || 'Northstar Studio | Portfolio',
-      description: meta.description || 'Fictional portfolio website layout and visual system.',
-      canonical: `https://northstar.example.com/${file}`,
-      og_image: 'images/project-placeholder.svg',
+      description: meta.description || 'Fictional portfolio website layout.',
+      canonical: `https://northstar.example.com/${pageRelativePath}`,
+      og_image: 'assets/images/project-placeholder.svg',
+      path_prefix: pathPrefix,
       content: finalBody
     };
 
     const compiledHtml = compilePage(layout, pageVariables);
-    const outputFilePath = path.join(DIST_DIR, file);
+    const outputFilePath = path.join(DIST_DIR, pageRelativePath);
+    ensureDirectoryExistence(outputFilePath);
     fs.writeFileSync(outputFilePath, compiledHtml, 'utf8');
     
-    compiledFiles.push(file);
-    console.log(`Compiled page: ${file}`);
+    compiledFiles.push(pageRelativePath);
+    console.log(`Compiled page: ${pageRelativePath}`);
   });
 
-  // 3. Compile 12 Unique Project Details Pages
+  // 4. Compile 12 Project Details Pages
   projects.forEach(project => {
+    const dir = 'pages/projects';
     const filename = `project-details-${project.id}.html`;
+    const pathPrefix = getPathPrefix(dir);
+    const pageRelativePath = `${dir}/${filename}`;
     
-    const bodyContent = `
+    const rawBodyContent = `
     <section class="hero" style="padding-bottom: 2rem;">
       <div class="container">
         <div class="breadcrumbs" aria-label="Breadcrumb navigation">
@@ -143,7 +370,7 @@ function build() {
           <p style="font-size: 1.15rem; color: var(--text-muted); margin-bottom: 2.5rem; line-height: 1.6;">${project.description}</p>
           
           <div class="hero-card" style="margin-bottom: 3.5rem;">
-            <img src="${project.coverImage}" alt="${project.title} Mockup cover preview display" style="width: 100%;" />
+            <img src="${pathPrefix}assets/${project.coverImage}" alt="${project.title} Mockup cover preview display" style="width: 100%;" />
           </div>
 
           <div style="display: flex; flex-direction: column; gap: 3rem;">
@@ -172,8 +399,8 @@ function build() {
               <h2 style="font-family: var(--font-heading); font-size: 1.65rem; margin-bottom: 1.25rem; color: #ffffff;">Project Gallery</h2>
               <div class="grid-3">
                 ${project.gallery.map((img, i) => `
-                  <div class="card" style="padding: 0.5rem; cursor: pointer;" onclick="openGalleryModal('${img}', '${project.title} Gallery Slot ${i+1}')">
-                    <img src="${img}" alt="${project.title} screenshot illustration ${i+1}" style="width: 100%;" />
+                  <div class="card" style="padding: 0.5rem; cursor: pointer;" onclick="openGalleryModal('${pathPrefix}assets/${img}', '${project.title} Gallery Slot ${i+1}')">
+                    <img src="${pathPrefix}assets/${img}" alt="${project.title} screenshot illustration ${i+1}" style="width: 100%;" />
                   </div>
                 `).join('\n')}
               </div>
@@ -237,27 +464,35 @@ function build() {
     </script>
     `;
 
+    // Rewrite body links to resolve directory references automatically
+    const bodyContent = rewriteBodyLinks(rawBodyContent, dir);
+
     const pageVariables = {
       title: `${project.title} | Case Study`,
       description: project.description,
-      canonical: `https://northstar.example.com/${filename}`,
-      og_image: 'images/project-placeholder.svg',
+      canonical: `https://northstar.example.com/${pageRelativePath}`,
+      og_image: 'assets/images/project-placeholder.svg',
+      path_prefix: pathPrefix,
       content: bodyContent
     };
 
     const compiledHtml = compilePage(layout, pageVariables);
-    const outputFilePath = path.join(DIST_DIR, filename);
+    const outputFilePath = path.join(DIST_DIR, pageRelativePath);
+    ensureDirectoryExistence(outputFilePath);
     fs.writeFileSync(outputFilePath, compiledHtml, 'utf8');
 
-    compiledFiles.push(filename);
-    console.log(`Compiled Project Details page: ${filename}`);
+    compiledFiles.push(pageRelativePath);
+    console.log(`Compiled Project Details page: ${pageRelativePath}`);
   });
 
-  // 4. Compile 20 Unique Blog Articles Pages
+  // 5. Compile 20 Unique Blog Articles Pages
   blog.forEach(post => {
+    const dir = 'pages/blog';
     const filename = `blog-${post.id}.html`;
+    const pathPrefix = getPathPrefix(dir);
+    const pageRelativePath = `${dir}/${filename}`;
 
-    const bodyContent = `
+    const rawBodyContent = `
     <section class="hero" style="padding-bottom: 2rem;">
       <div class="container" style="max-width: 800px;">
         <div class="breadcrumbs" aria-label="Breadcrumb navigation">
@@ -274,7 +509,7 @@ function build() {
           <span>Author: <strong>${post.author}</strong></span>
         </div>
 
-        <!-- Table of Contents component -->
+        <!-- Table of Contents -->
         <div class="card" style="padding: 1.5rem; margin-bottom: 2.5rem; background: rgba(255, 255, 255, 0.015);">
           <h3 style="font-family: var(--font-heading); font-size: 1.15rem; margin-bottom: 0.75rem;">Table of Contents</h3>
           <nav style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.9rem;" aria-label="Table of contents menu">
@@ -287,7 +522,7 @@ function build() {
           ${post.body}
         </div>
 
-        <!-- Related Posts section -->
+        <!-- Related Posts -->
         <div style="border-top: 1px solid var(--border-color); margin-top: 4rem; padding-top: 2.5rem;">
           <h3 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 1.5rem;">Related Articles</h3>
           <div class="grid-2">
@@ -307,23 +542,28 @@ function build() {
     </section>
     `;
 
+    // Rewrite body links dynamically
+    const bodyContent = rewriteBodyLinks(rawBodyContent, dir);
+
     const pageVariables = {
       title: `${post.title} | Blog`,
       description: `Fictional article post detailing ${post.category.toLowerCase()} variables.`,
-      canonical: `https://northstar.example.com/${filename}`,
-      og_image: 'images/project-placeholder.svg',
+      canonical: `https://northstar.example.com/${pageRelativePath}`,
+      og_image: 'assets/images/project-placeholder.svg',
+      path_prefix: pathPrefix,
       content: bodyContent
     };
 
     const compiledHtml = compilePage(layout, pageVariables);
-    const outputFilePath = path.join(DIST_DIR, filename);
+    const outputFilePath = path.join(DIST_DIR, pageRelativePath);
+    ensureDirectoryExistence(outputFilePath);
     fs.writeFileSync(outputFilePath, compiledHtml, 'utf8');
 
-    compiledFiles.push(filename);
-    console.log(`Compiled Blog Article page: ${filename}`);
+    compiledFiles.push(pageRelativePath);
+    console.log(`Compiled Blog Article page: ${pageRelativePath}`);
   });
 
-  // 5. Generate sitemap.xml in root
+  // 6. Generate sitemap.xml
   const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   ${compiledFiles.map(file => `
@@ -338,7 +578,7 @@ function build() {
   fs.writeFileSync(path.join(DIST_DIR, 'sitemap.xml'), sitemapXml.trim(), 'utf8');
   console.log('Compiled sitemap.xml successfully!');
 
-  // 6. Generate robots.txt in root
+  // 7. Generate robots.txt
   const robotsTxt = `User-agent: *
 Allow: /
 

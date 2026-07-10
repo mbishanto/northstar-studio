@@ -2,97 +2,145 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://northstar.example.com/404.html</loc>
+    <loc>https://northstar.example.com/pages/404.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/about.html</loc>
+    <loc>https://northstar.example.com/pages/500.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/blog.html</loc>
+    <loc>https://northstar.example.com/pages/about.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/case-studies.html</loc>
+    <loc>https://northstar.example.com/pages/legal/accessibility.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/certifications.html</loc>
+    <loc>https://northstar.example.com/pages/resources/animations.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/changelog.html</loc>
+    <loc>https://northstar.example.com/pages/resources/api-docs.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/clients.html</loc>
+    <loc>https://northstar.example.com/pages/blog/blog.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/coming-soon.html</loc>
+    <loc>https://northstar.example.com/pages/resources/career.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/contact.html</loc>
+    <loc>https://northstar.example.com/pages/case-studies.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/cookie-policy.html</loc>
+    <loc>https://northstar.example.com/pages/resources/certifications.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/documentation.html</loc>
+    <loc>https://northstar.example.com/pages/changelog.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/downloads.html</loc>
+    <loc>https://northstar.example.com/pages/resources/clients.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/education.html</loc>
+    <loc>https://northstar.example.com/pages/coming-soon.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/experience.html</loc>
+    <loc>https://northstar.example.com/pages/resources/components.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/faq.html</loc>
+    <loc>https://northstar.example.com/pages/contact.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/gallery.html</loc>
+    <loc>https://northstar.example.com/pages/legal/cookie-policy.html</loc>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://northstar.example.com/pages/resources/design-system.html</loc>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://northstar.example.com/pages/resources/developer-notes.html</loc>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://northstar.example.com/pages/resources/documentation.html</loc>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://northstar.example.com/pages/resources/downloads.html</loc>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://northstar.example.com/pages/education.html</loc>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://northstar.example.com/pages/experience.html</loc>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://northstar.example.com/pages/faq.html</loc>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://northstar.example.com/pages/gallery.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -104,301 +152,343 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/media-kit.html</loc>
+    <loc>https://northstar.example.com/pages/legal/licenses.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/open-source.html</loc>
+    <loc>https://northstar.example.com/pages/maintenance.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/press.html</loc>
+    <loc>https://northstar.example.com/pages/resources/media-kit.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/pricing.html</loc>
+    <loc>https://northstar.example.com/pages/resources/newsletter.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/privacy.html</loc>
+    <loc>https://northstar.example.com/pages/resources/open-source.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/process.html</loc>
+    <loc>https://northstar.example.com/pages/resources/press.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/project-details.html</loc>
+    <loc>https://northstar.example.com/pages/pricing.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/projects.html</loc>
+    <loc>https://northstar.example.com/pages/legal/privacy.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/resources.html</loc>
+    <loc>https://northstar.example.com/pages/process.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/resume.html</loc>
+    <loc>https://northstar.example.com/pages/projects/project-details.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/search.html</loc>
+    <loc>https://northstar.example.com/pages/projects/projects.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/services.html</loc>
+    <loc>https://northstar.example.com/pages/resources/resources.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/sitemap.html</loc>
+    <loc>https://northstar.example.com/pages/resume.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/skills.html</loc>
+    <loc>https://northstar.example.com/pages/resources/roadmap.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/support.html</loc>
+    <loc>https://northstar.example.com/pages/search.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/terms.html</loc>
+    <loc>https://northstar.example.com/pages/services.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/testimonials.html</loc>
+    <loc>https://northstar.example.com/pages/sitemap.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/thank-you.html</loc>
+    <loc>https://northstar.example.com/pages/skills.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/project-details-1.html</loc>
+    <loc>https://northstar.example.com/pages/resources/style-guide.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/project-details-2.html</loc>
+    <loc>https://northstar.example.com/pages/support.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/project-details-3.html</loc>
+    <loc>https://northstar.example.com/pages/legal/terms.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/project-details-4.html</loc>
+    <loc>https://northstar.example.com/pages/testimonials.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/project-details-5.html</loc>
+    <loc>https://northstar.example.com/pages/thank-you.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/project-details-6.html</loc>
+    <loc>https://northstar.example.com/pages/resources/toolkit.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/project-details-7.html</loc>
+    <loc>https://northstar.example.com/pages/resources/ui-showcase.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/project-details-8.html</loc>
+    <loc>https://northstar.example.com/pages/projects/project-details-1.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/project-details-9.html</loc>
+    <loc>https://northstar.example.com/pages/projects/project-details-2.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/project-details-10.html</loc>
+    <loc>https://northstar.example.com/pages/projects/project-details-3.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/project-details-11.html</loc>
+    <loc>https://northstar.example.com/pages/projects/project-details-4.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/project-details-12.html</loc>
+    <loc>https://northstar.example.com/pages/projects/project-details-5.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/blog-1.html</loc>
+    <loc>https://northstar.example.com/pages/projects/project-details-6.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/blog-2.html</loc>
+    <loc>https://northstar.example.com/pages/projects/project-details-7.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/blog-3.html</loc>
+    <loc>https://northstar.example.com/pages/projects/project-details-8.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/blog-4.html</loc>
+    <loc>https://northstar.example.com/pages/projects/project-details-9.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/blog-5.html</loc>
+    <loc>https://northstar.example.com/pages/projects/project-details-10.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/blog-6.html</loc>
+    <loc>https://northstar.example.com/pages/projects/project-details-11.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/blog-7.html</loc>
+    <loc>https://northstar.example.com/pages/projects/project-details-12.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/blog-8.html</loc>
+    <loc>https://northstar.example.com/pages/blog/blog-1.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/blog-9.html</loc>
+    <loc>https://northstar.example.com/pages/blog/blog-2.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/blog-10.html</loc>
+    <loc>https://northstar.example.com/pages/blog/blog-3.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/blog-11.html</loc>
+    <loc>https://northstar.example.com/pages/blog/blog-4.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/blog-12.html</loc>
+    <loc>https://northstar.example.com/pages/blog/blog-5.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/blog-13.html</loc>
+    <loc>https://northstar.example.com/pages/blog/blog-6.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/blog-14.html</loc>
+    <loc>https://northstar.example.com/pages/blog/blog-7.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/blog-15.html</loc>
+    <loc>https://northstar.example.com/pages/blog/blog-8.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/blog-16.html</loc>
+    <loc>https://northstar.example.com/pages/blog/blog-9.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/blog-17.html</loc>
+    <loc>https://northstar.example.com/pages/blog/blog-10.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/blog-18.html</loc>
+    <loc>https://northstar.example.com/pages/blog/blog-11.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/blog-19.html</loc>
+    <loc>https://northstar.example.com/pages/blog/blog-12.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northstar.example.com/blog-20.html</loc>
+    <loc>https://northstar.example.com/pages/blog/blog-13.html</loc>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://northstar.example.com/pages/blog/blog-14.html</loc>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://northstar.example.com/pages/blog/blog-15.html</loc>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://northstar.example.com/pages/blog/blog-16.html</loc>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://northstar.example.com/pages/blog/blog-17.html</loc>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://northstar.example.com/pages/blog/blog-18.html</loc>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://northstar.example.com/pages/blog/blog-19.html</loc>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://northstar.example.com/pages/blog/blog-20.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

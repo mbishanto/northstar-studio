@@ -1,8 +1,8 @@
 // c:\Users\NAK\coding code - badhan\verify.js
 /**
  * Northstar Studio Link & Page Verification Utility
- * Parses all compiled HTML files in the root workspace directory, extracts anchor tags
- * (excluding javascript script blocks), and asserts that every target file exists.
+ * Recursively scans all compiled HTML files inside the root directory and pages/ directories,
+ * parses anchors, resolves relative routes, and checks that every target file exists on disk.
  */
 
 const fs = require('fs');
@@ -10,13 +10,34 @@ const path = require('path');
 
 const ROOT_DIR = __dirname;
 
-function verify() {
-  console.log('Starting static navigation integrity validation...');
+// Helper: Recursively walk directories and retrieve all HTML files
+function walkSync(dir, fileList = []) {
+  const files = fs.readdirSync(dir);
+  files.forEach(file => {
+    // Skip source folders and metadata caches
+    if (file === 'src' || file === 'node_modules' || file === '.git' || file === '.gemini') {
+      return;
+    }
 
-  const htmlFiles = fs.readdirSync(ROOT_DIR).filter(file => file.endsWith('.html'));
+    const filePath = path.join(dir, file);
+    const stat = fs.statSync(filePath);
+    
+    if (stat.isDirectory()) {
+      walkSync(filePath, fileList);
+    } else if (file.endsWith('.html')) {
+      fileList.push(filePath);
+    }
+  });
+  return fileList;
+}
+
+function verify() {
+  console.log('Starting recursive link integrity validation...');
+
+  const htmlFiles = walkSync(ROOT_DIR);
   
   if (htmlFiles.length === 0) {
-    console.error('No HTML files located in the root workspace!');
+    console.error('No HTML files located in the workspace!');
     process.exit(1);
   }
 
@@ -24,8 +45,8 @@ function verify() {
   let brokenLinksCount = 0;
   const brokenLinks = [];
 
-  htmlFiles.forEach(file => {
-    const filePath = path.join(ROOT_DIR, file);
+  htmlFiles.forEach(filePath => {
+    const fileRelative = path.relative(ROOT_DIR, filePath).replace(/\\/g, '/');
     let html = fs.readFileSync(filePath, 'utf8');
 
     // Strip script blocks to avoid parsing template strings inside JS scripts
@@ -39,7 +60,7 @@ function verify() {
       const href = match[1];
       totalLinksChecked++;
 
-      // Skip external links, mailto/tel protocol, and local anchors
+      // Skip external links, mailto/tel protocols, and local hash anchors
       if (
         href.startsWith('http://') || 
         href.startsWith('https://') || 
@@ -50,19 +71,20 @@ function verify() {
         continue;
       }
 
-      // Check if target file exists in root workspace
+      // Check if target file exists relative to the current file's directory
       const targetFilename = href.split('#')[0]; // Strip hash anchors
       
       if (!targetFilename) continue;
 
-      const targetPath = path.join(ROOT_DIR, targetFilename);
+      const currentFileDir = path.dirname(filePath);
+      const targetPath = path.resolve(currentFileDir, targetFilename);
       
       if (!fs.existsSync(targetPath)) {
         brokenLinksCount++;
         brokenLinks.push({
-          sourceFile: file,
+          sourceFile: fileRelative,
           href: href,
-          targetFile: targetFilename
+          targetFile: path.relative(ROOT_DIR, targetPath).replace(/\\/g, '/')
         });
       }
     }

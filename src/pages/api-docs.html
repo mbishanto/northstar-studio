@@ -1,0 +1,49 @@
+<!--{
+  "title": "API Documentation | Northstar Studio",
+  "description": "Fictional API endpoints and telemetry schema structures (mock docs).",
+  "active_nav": "",
+  "dir": "pages/resources"
+}-->
+<section class="hero">
+  <div class="container project-details-grid">
+    
+    <!-- Sidebar -->
+    <div class="project-snapshot-panel reveal" style="padding: 1.5rem; top: 100px;">
+      <h3 class="project-snapshot-title" style="font-size: 1.15rem; margin-bottom: 1rem;">API Endpoints</h3>
+      <nav style="display: flex; flex-direction: column; gap: 0.75rem;" aria-label="API Documentation Menu">
+        <a href="#telemetry" style="font-size: 0.9rem; color: var(--accent-cyan); font-weight: 500;">GET /v1/telemetry</a>
+        <a href="#deploy" style="font-size: 0.9rem;">POST /v1/deploy</a>
+        <a href="#schema" style="font-size: 0.9rem;">JSON Data Schema</a>
+      </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="reveal">
+      <p class="eyebrow">Developer Reference</p>
+      <h1 style="font-size: clamp(2rem, 4vw, 2.75rem);">API Reference Guide</h1>
+      <p style="color: var(--text-muted); margin-bottom: 2rem;">This page displays fictional API routing endpoints, HTTP method logs, and JSON properties compiled for layout evaluation.</p>
+      
+      <div style="display: flex; flex-direction: column; gap: 2.5rem;">
+        
+        <!-- Endpoint 1 -->
+        <article id="telemetry">
+          <h2 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 0.5rem; color: #ffffff;"><span style="color: var(--accent-cyan); font-weight: 600;">GET</span> /v1/telemetry</h2>
+          <p style="color: var(--text-muted); margin-bottom: 1rem;">Queries simulated network intrusion metrics and server load status flags. Returns current logging coordinates in JSON arrays.</p>
+          <pre style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); padding: 1.25rem; border-radius: var(--radius-sm); font-family: monospace; font-size: 0.85rem; overflow-x: auto; color: var(--accent-cyan);">
+curl https://api.northstar.example.com/v1/telemetry \\
+  -H "Authorization: Bearer MOCK_KEY"</pre>
+        </article>
+
+        <!-- Endpoint 2 -->
+        <article id="deploy">
+          <h2 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 0.5rem; color: #ffffff;"><span style="color: #10b981; font-weight: 600;">POST</span> /v1/deploy</h2>
+          <p style="color: var(--text-muted); margin-bottom: 1rem;">Triggers simulated serverless function deployments. In a real system, this endpoint indexes repository builds and triggers build actions.</p>
+          <pre style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); padding: 1.25rem; border-radius: var(--radius-sm); font-family: monospace; font-size: 0.85rem; overflow-x: auto; color: var(--accent-cyan);">
+curl -X POST https://api.northstar.example.com/v1/deploy \\
+  -d '{"branch":"main"}'</pre>
+        </article>
+
+      </div>
+    </div>
+  </div>
+</section>

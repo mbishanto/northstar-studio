@@ -1,0 +1,47 @@
+<!--{
+  "title": "Newsletter Subscription | Northstar Studio",
+  "description": "Subscribe to receive fictional design tips and updates (mock signup).",
+  "active_nav": "",
+  "dir": "pages/resources"
+}-->
+<section class="hero" style="padding: 8rem 0;">
+  <div class="container" style="max-width: 550px; text-align: center;">
+    <div class="card reveal" style="padding: 3.5rem 2rem;">
+      <div style="font-size: 3rem; color: var(--accent-cyan); line-height: 1; margin-bottom: 1.25rem;">✉</div>
+      <h2 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: 0.75rem;">Newsletter Sign Up</h2>
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 2rem;">This represents a dedicated newsletter subscription landing page mockup. Submitting an email triggers validation scripts to verify format rules.</p>
+      
+      <form class="newsletter-form" id="newsletter-landing-form" novalidate>
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+          <input type="email" id="newsletter-landing-email" placeholder="you@example.com" class="form-control" style="text-align: center; border-radius: var(--radius-full);" required />
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Subscribe (Mock)</button>
+        </div>
+        <p class="newsletter-status" id="newsletter-landing-status" style="margin-top: 1rem; font-weight: 500; font-size: 0.9rem;"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('newsletter-landing-form');
+    if (!form) return;
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const input = document.getElementById('newsletter-landing-email');
+      const status = document.getElementById('newsletter-landing-status');
+      if (!input || !status) return;
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (emailRegex.test(input.value.trim())) {
+        status.className = 'newsletter-status success';
+        status.textContent = 'Thanks! Simulated subscription completed successfully.';
+        input.value = '';
+      } else {
+        status.className = 'newsletter-status error';
+        status.textContent = 'Invalid email syntax.';
+      }
+    });
+  });
+</script>
