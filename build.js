@@ -164,7 +164,8 @@ const getPathPrefix = (dir) => {
 function rewriteBodyLinks(bodyHtml, currentDir) {
   const pathPrefix = getPathPrefix(currentDir);
   
-  return bodyHtml.replace(/(<a\s+[^>]*href=["'])([^"']*)(["'])/gi, (match, p1, p2, p3) => {
+  // 1. Rewrite anchor hrefs
+  let result = bodyHtml.replace(/(<a\s+[^>]*href=["'])([^"']*)(["'])/gi, (match, p1, p2, p3) => {
     let href = p2;
     
     // Skip absolute links, anchors, protocols, javascript triggers
@@ -212,6 +213,15 @@ function rewriteBodyLinks(bodyHtml, currentDir) {
 
     return match;
   });
+
+  // 2. Rewrite image sources (convert images/path to assets/images/path)
+  result = result.replace(/(<img\s+[^>]*src=["'])(images\/[^"']*)(["'])/gi, (match, p1, p2, p3) => {
+    const srcPath = p2; // e.g. "images/project-placeholder.svg"
+    const resolvedSrc = `${pathPrefix}assets/${srcPath}`;
+    return `${p1}${resolvedSrc}${p3}`;
+  });
+
+  return result;
 }
 
 function build() {

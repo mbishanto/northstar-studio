@@ -2,7 +2,7 @@
 /**
  * Northstar Studio Link & Page Verification Utility
  * Recursively scans all compiled HTML files inside the root directory and pages/ directories,
- * parses anchors, resolves relative routes, and checks that every target file exists on disk.
+ * parses anchors and image sources, resolves relative routes, and checks that every target file exists on disk.
  */
 
 const fs = require('fs');
@@ -32,7 +32,7 @@ function walkSync(dir, fileList = []) {
 }
 
 function verify() {
-  console.log('Starting recursive link integrity validation...');
+  console.log('Starting recursive link and image integrity validation...');
 
   const htmlFiles = walkSync(ROOT_DIR);
   
@@ -52,7 +52,7 @@ function verify() {
     // Strip script blocks to avoid parsing template strings inside JS scripts
     html = html.replace(/<script[\s\S]*?<\/script>/gi, '');
 
-    // Extract all href values from anchor tags
+    // 1. Extract all href values from anchor tags
     const hrefRegex = /<a\s+[^>]*href=["']([^"']+)["']/gi;
     let match;
 
@@ -66,7 +66,8 @@ function verify() {
         href.startsWith('https://') || 
         href.startsWith('mailto:') || 
         href.startsWith('tel:') || 
-        href.startsWith('#')
+        href.startsWith('#') ||
+        href.startsWith('javascript:')
       ) {
         continue;
       }
@@ -84,7 +85,40 @@ function verify() {
         brokenLinks.push({
           sourceFile: fileRelative,
           href: href,
-          targetFile: path.relative(ROOT_DIR, targetPath).replace(/\\/g, '/')
+          targetFile: path.relative(ROOT_DIR, targetPath).replace(/\\/g, '/'),
+          isImage: false
+        });
+      }
+    }
+
+    // 2. Extract all src values from img tags
+    const imgRegex = /<img\s+[^>]*src=["']([^"']+)["']/gi;
+    let imgMatch;
+
+    while ((imgMatch = imgRegex.exec(html)) !== null) {
+      const src = imgMatch[1];
+      totalLinksChecked++;
+
+      // Skip external urls, data URIs
+      if (src.startsWith('http://') || src.startsWith('https://') || src.startsWith('data:')) {
+        continue;
+      }
+
+      // Check if target image file exists relative to the current file's directory
+      const targetFilename = src.split('?')[0]; // Strip query parameters
+      
+      if (!targetFilename) continue;
+
+      const currentFileDir = path.dirname(filePath);
+      const targetPath = path.resolve(currentFileDir, targetFilename);
+      
+      if (!fs.existsSync(targetPath)) {
+        brokenLinksCount++;
+        brokenLinks.push({
+          sourceFile: fileRelative,
+          href: src,
+          targetFile: path.relative(ROOT_DIR, targetPath).replace(/\\/g, '/'),
+          isImage: true
         });
       }
     }
@@ -92,17 +126,21 @@ function verify() {
 
   console.log(`\nVerification Summary:`);
   console.log(`- Total HTML Files Checked: ${htmlFiles.length}`);
-  console.log(`- Total Link References Inspected: ${totalLinksChecked}`);
-  console.log(`- Broken Links Found: ${brokenLinksCount}`);
+  console.log(`- Total References Inspected: ${totalLinksChecked}`);
+  console.log(`- Broken Elements Found: ${brokenLinksCount}`);
 
   if (brokenLinksCount > 0) {
-    console.error('\nBroken Links Located:');
+    console.error('\nBroken Links/Images Located:');
     brokenLinks.forEach(link => {
-      console.error(`  - In [${link.sourceFile}]: Link to "${link.href}" is broken (File not found: ${link.targetFile})`);
+      if (link.isImage) {
+        console.error(`  - In [${link.sourceFile}]: Image src "${link.href}" is broken (File not found: ${link.targetFile})`);
+      } else {
+        console.error(`  - In [${link.sourceFile}]: Link to "${link.href}" is broken (File not found: ${link.targetFile})`);
+      }
     });
     process.exit(1);
   } else {
-    console.log('\nSUCCESS: All navigation links are valid. No broken references found!');
+    console.log('\nSUCCESS: All navigation links and images are valid. No broken references found!');
     process.exit(0);
   }
 }

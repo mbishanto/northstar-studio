@@ -1514,12 +1514,14 @@ button {
     gap: 2rem;
     padding: 3rem 1.5rem;
     transform: translateX(100%);
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    visibility: hidden;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s;
     z-index: 999;
   }
 
   .site-nav.open {
     transform: translateX(0);
+    visibility: visible;
   }
 
   .nav-toggle.open span:nth-child(1) {
@@ -1682,3 +1684,17 @@ button {
   }
 }
 
+/* Defensive structural constraints (Sticky Footer & Dialog elements overrides) */
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex-grow: 1;
+}
+
+dialog:not([open]) {
+  display: none !important;
+}

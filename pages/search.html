@@ -117,26 +117,45 @@
     const results = document.getElementById('page-search-results');
     if (!input || !results) return;
 
-    // Local redundancy index if main index is not accessible
+    // Compute pathPrefix relative to the homepage navigation element in DOM
+    const homeLink = document.querySelector('a[data-nav="home"]');
+    const pathPrefix = homeLink ? homeLink.getAttribute('href').replace('index.html', '') : '';
+
+    // Local redundancy index matching the reorganized paths
     const searchIndex = [
       { title: "Home Page", url: "index.html", desc: "View the portfolio main page and featured items.", cat: "Page" },
-      { title: "About Us Story", url: "about.html", desc: "Learn about the designers, developers, and process values.", cat: "Page" },
-      { title: "Client Portfolio Projects", url: "projects.html", desc: "Browse our 12 complete portfolio builds.", cat: "Page" },
-      { title: "Available Services", url: "services.html", desc: "Explore user interface, API, and cloud services.", cat: "Page" },
-      { title: "Skills & Stack", url: "skills.html", desc: "Check core coding and layout technologies.", cat: "Page" },
-      { title: "Resume & Education", url: "resume.html", desc: "Detailed professional experience and academic degrees.", cat: "Page" },
-      { title: "Blog Hub", url: "blog.html", desc: "Read 20 sample articles detailing development tricks.", cat: "Page" },
-      { title: "Contact Inquiry", url: "contact.html", desc: "Drop a line or schedule consultation hours.", cat: "Page" },
-      { title: "Frequently Asked Questions (FAQ)", url: "faq.html", desc: "Find support answers regarding workflow guidelines.", cat: "Page" },
-      { title: "Pricing & Plans", url: "pricing.html", desc: "Compare monthly and annual subscription options.", cat: "Page" },
-      { title: "Our Process Timeline", url: "process.html", desc: "See our staging, build, and launch flow.", cat: "Page" },
-      { title: "Testimonials Listing", url: "testimonials.html", desc: "Read fictional reviews from verified clients.", cat: "Page" },
-      { title: "Case Studies Index", url: "case-studies.html", desc: "Deep-dives into conversion metrics and KPIs.", cat: "Page" },
-      { title: "Downloads & Files", url: "downloads.html", desc: "Get style guide files, templates, and logs.", cat: "Page" },
-      { title: "Certifications Log", url: "certifications.html", desc: "Review visual design and engineering badges.", cat: "Page" },
-      { title: "Open Source Repos", url: "open-source.html", desc: "Check sample GitHub repository code integrations.", cat: "Page" },
-      { title: "Privacy Policy", url: "privacy.html", desc: "Fictional compliance details.", cat: "Page" },
-      { title: "Sitemap Hub", url: "sitemap.html", desc: "Browse a unified list of all pages.", cat: "Page" }
+      { title: "About Us Story", url: "pages/about.html", desc: "Learn about the designers, developers, and process values.", cat: "Page" },
+      { title: "Client Portfolio Projects", url: "pages/projects/projects.html", desc: "Browse our 12 complete portfolio builds.", cat: "Page" },
+      { title: "Available Services", url: "pages/services.html", desc: "Explore user interface, API, and cloud services.", cat: "Page" },
+      { title: "Skills & Stack", url: "pages/skills.html", desc: "Check core coding and layout technologies.", cat: "Page" },
+      { title: "Resume & Education", url: "pages/resume.html", desc: "Detailed professional experience and academic degrees.", cat: "Page" },
+      { title: "Blog Hub", url: "pages/blog/blog.html", desc: "Read 20 sample articles detailing development tricks.", cat: "Page" },
+      { title: "Contact Inquiry", url: "pages/contact.html", desc: "Drop a line or schedule consultation hours.", cat: "Page" },
+      { title: "Frequently Asked Questions (FAQ)", url: "pages/faq.html", desc: "Find support answers regarding workflow guidelines.", cat: "Page" },
+      { title: "Pricing & Plans", url: "pages/pricing.html", desc: "Compare monthly and annual subscription options.", cat: "Page" },
+      { title: "Our Process Timeline", url: "pages/process.html", desc: "See our staging, build, and launch flow.", cat: "Page" },
+      { title: "Testimonials Listing", url: "pages/testimonials.html", desc: "Read fictional reviews from verified clients.", cat: "Page" },
+      { title: "Case Studies Index", url: "pages/case-studies.html", desc: "Deep-dives into conversion metrics and KPIs.", cat: "Page" },
+      { title: "Downloads & Files", url: "pages/resources/downloads.html", desc: "Get style guide files, templates, and logs.", cat: "Page" },
+      { title: "Certifications Log", url: "pages/resources/certifications.html", desc: "Review visual design and engineering badges.", cat: "Page" },
+      { title: "Open Source Repos", url: "pages/resources/open-source.html", desc: "Check sample GitHub repository code integrations.", cat: "Page" },
+      { title: "Privacy Policy", url: "pages/legal/privacy.html", desc: "Fictional compliance details.", cat: "Page" },
+      { title: "Sitemap Hub", url: "pages/sitemap.html", desc: "Browse a unified list of all pages.", cat: "Page" },
+      
+      // Reorganized resources
+      { title: "Style Guide Page", url: "pages/resources/style-guide.html", desc: "Browse color swatches and typography hierarchies.", cat: "Page" },
+      { title: "Design System Page", url: "pages/resources/design-system.html", desc: "Explore Figma variables mappings and spacing tokens.", cat: "Page" },
+      { title: "Component Catalog", url: "pages/resources/components.html", desc: "Check buttons library and validation input blocks.", cat: "Page" },
+      { title: "UI Showcase Page", url: "pages/resources/ui-showcase.html", desc: "View alternating layout designs and stats widgets.", cat: "Page" },
+      { title: "Transitions & Animations", url: "pages/resources/animations.html", desc: "Inspect hover elements and scroll reveals.", cat: "Page" },
+      { title: "Feature Roadmap", url: "pages/resources/roadmap.html", desc: "Track fictional milestones and targets.", cat: "Page" },
+      { title: "API Reference Guide", url: "pages/resources/api-docs.html", desc: "Check simulated telemetry endpoints.", cat: "Page" },
+      { title: "Developer Dev Notes", url: "pages/resources/developer-notes.html", desc: "Read compiler setups and design comments.", cat: "Page" },
+      { title: "Toolkit Utilities", url: "pages/resources/toolkit.html", desc: "List CLI tools and package installations.", cat: "Page" },
+      { title: "Careers Vacancies", url: "pages/resources/career.html", desc: "Check fictional job offerings.", cat: "Page" },
+      { title: "Newsletter Landing Page", url: "pages/resources/newsletter.html", desc: "Dedicated subscription forms.", cat: "Page" },
+      { title: "Accessibility Policy", url: "pages/legal/accessibility.html", desc: "Statement on WCAG AA criteria compliance.", cat: "Page" },
+      { title: "Package Licenses", url: "pages/legal/licenses.html", desc: "Attribution and license file log.", cat: "Page" }
     ];
 
     input.addEventListener('input', () => {
@@ -158,7 +177,7 @@
       }
 
       results.innerHTML = matched.map(item => `
-        <a href="${item.url}" class="search-result-item" style="background: var(--surface-color); padding: 1.15rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color); display: block; margin-bottom: 0.85rem;">
+        <a href="${pathPrefix}${item.url}" class="search-result-item" style="background: var(--surface-color); padding: 1.15rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color); display: block; margin-bottom: 0.85rem;">
           <div class="search-result-title" style="font-size: 1.15rem;">${item.title}</div>
           <div class="search-result-snippet" style="margin-top: 0.25rem;">${item.desc}</div>
           <span class="search-result-category" style="margin-top: 0.5rem; display: inline-block;">${item.cat}</span>
